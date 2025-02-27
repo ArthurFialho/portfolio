@@ -23,3 +23,23 @@
     -webkit-text-stroke: 1px #0a02d6;
   }
 }
+
+.title-name {
+  background: linear-gradient(to right, #66d2ce, #2daa9e, #026070, #8cbeb3);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 2.5s linear infinite;
+}
+
+@keyframes gradient {
+  to {
+    background-position: 200%;
+  }
+}
+
+.title-hover:hover {
+  letter-spacing: 3;
+  transition: 0.4s;
+}

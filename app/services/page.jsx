@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
+import "./pulse.css";
 
 const services = [
   {
@@ -62,20 +65,26 @@ const Services = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
         >
           {services.map((service, index) => {
+            const [isHovered, setIsHovered] = useState(false);
+
             return (
               <div
                 key={index}
                 className="flex-1 flex-col justify-center gap-6 group"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               >
                 <div className="w-full flex justify-between items-center">
-                  <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover">
+                  <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-accent transition-all">
                     {service.num}
                   </div>
                   <Link
                     href={service.href}
-                    className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+                    className={`w-[70px] h-[70px] rounded-full bg-accent group-hover:bg-accent-hover transition-all duration-500 flex justify-center items-center hover:-rotate-45 ${
+                      isHovered ? "pulse" : ""
+                    }`}
                   >
-                    <BsArrowDownRight className="text-primary text-3xl" />
+                    <BsArrowDownRight className="text-primary text-3xl hover:fill-white transition-all" />
                   </Link>
                 </div>
                 <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 mb-3 mt-3">

@@ -16,7 +16,7 @@ const Home = () => {
             <span className="text-xl">Software Developer & Designer</span>
             <h1 className="h1 mb-6">
               Hello! I'm <br />
-              <span className="text-accent">Arthur Fialho</span>
+              <span className="title-name">Arthur Fialho</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               I am a specialist in UI/UX design and minimalist projects.
