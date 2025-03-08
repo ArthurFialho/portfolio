@@ -79,6 +79,7 @@ const Services = () => {
                     {service.num}
                   </div>
                   <Link
+                    target="_blank"
                     href={service.href}
                     className={`w-[70px] h-[70px] rounded-full bg-accent group-hover:bg-accent-hover transition-all duration-500 flex justify-center items-center hover:-rotate-45 ${
                       isHovered ? "pulse" : ""

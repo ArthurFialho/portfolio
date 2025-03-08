@@ -19,15 +19,15 @@ const Home = () => {
               <span className="title-name">Arthur Fialho</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I am a specialist in UI/UX design and minimalist projects.
+              I am a professional in UI/UX design and minimalist projects.
               Front-end and back-end developer who writes clean and elegant
               code, crafting amazing digital experiences.
             </p>
             {/* {btn and socials} */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a
-                href="https://docs.google.com/document/d/1foAlEpRQFeVcaGHRfU81z_gmggcR67X2XxfTBQ7P3YM/edit?usp=sharing" // Substituir pelo caminho correto
-                download="Arthur_Fialho_CV.pdf"
+                href="https://docs.google.com/document/d/1TM1BC9U-ETOwmASoC_i_dBJnyQplP6pRpm_wSyDP6sk/edit?usp=sharing" // Substituir pelo caminho correto
+                download="Currículo_Arthur_Fialho_Dev_Full_Stack.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
