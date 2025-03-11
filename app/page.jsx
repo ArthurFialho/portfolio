@@ -26,10 +26,8 @@ const Home = () => {
             {/* {btn and socials} */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a
-                href="https://docs.google.com/document/d/1TM1BC9U-ETOwmASoC_i_dBJnyQplP6pRpm_wSyDP6sk/edit?usp=sharing" // Substituir pelo caminho correto
-                download="Currículo_Arthur_Fialho_Dev_Full_Stack.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/assets/Currículo _ Arthur Fialho - Dev. Full Stack (2).pdf"
+                download="Curriculo_Arthur_Fialho_Dev_Full_Stack.pdf"
               >
                 <Button
                   variant="outline"
