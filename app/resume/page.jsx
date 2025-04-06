@@ -19,6 +19,9 @@ import {
   SiPostman,
   SiPython,
   SiTypescript,
+  SiDotnet,
+  SiPhp,
+  SiSequelize,
 } from "react-icons/si";
 
 //about data
@@ -32,7 +35,7 @@ const about = {
     },
     {
       fieldName: "Phone",
-      fieldValue: "+55 (31) 99786-7386",
+      fieldValue: "+55 (31)99786-7386",
     },
     {
       fieldName: "Experience",
@@ -69,12 +72,20 @@ const experience = {
     "I work as an intern at Geocode, developing software solutions focused on mapping and communication. I have experience in programming, UI/UX design, and databases, and I'm passionate about logo design.",
   items: [
     {
-      company: "Geocode Systems",
+      company: (
+        <a href="https://codemaps.com.br" target="_blank">
+          Geocode Systems
+        </a>
+      ),
       position: "Full-stack Development Intern",
       duration: "September 2024 - Present",
     },
     {
-      company: "Cotemig",
+      company: (
+        <a href="https://cotemig.com.br" target="_blank">
+          Cotemig
+        </a>
+      ),
       position: "Python & Front-End Tutor for Beginners",
       duration: "June 2024 - September 2024",
     },
@@ -99,22 +110,47 @@ const education = {
     "I'm currently in my third year of technical studies at COTEMIG, where I participate as both a student and a mentor in CodeClub. I’ve also completed HTML & CSS (2023) and JavaScript (2024) courses at Origamid, enhancing my web development skills.",
   items: [
     {
-      instituition: "Origamid",
+      instituition: (
+        <a href="https://origamid.com" target="_blank">
+          Origamid
+        </a>
+      ),
       degree: "HTML & CSS Complete Course",
       duration: "2023",
     },
     {
-      instituition: "Origamid",
+      instituition: (
+        <a href="https://origamid.com" target="_blank">
+          Origamid
+        </a>
+      ),
       degree: "Javascript Complete Course",
       duration: "2024",
     },
     {
-      instituition: "Cotemig",
+      instituition: (
+        <a href="https://origamid.com" target="_blank">
+          Origamid
+        </a>
+      ),
+      degree: "UI/UX Complete Course",
+      duration: "2024",
+    },
+    {
+      instituition: (
+        <a href="https://cotemig.com.br" target="_blank">
+          Cotemig
+        </a>
+      ),
       degree: "Technical Course in Programming and IT",
       duration: "February 2023 - December 2025",
     },
     {
-      instituition: "Cotemig",
+      instituition: (
+        <a href="https://cotemig.com.br" target="_blank">
+          Cotemig
+        </a>
+      ),
       degree: "CodeClub - Studant",
       duration: "2024",
     },
@@ -124,19 +160,40 @@ const education = {
       duration: "December 2024 - Present",
     },
     {
-      instituition: "Cisco",
+      instituition: (
+        <a href="https://cisco.com" target="_blank">
+          Cisco
+        </a>
+      ),
       degree: "Introduction To CyberSecurity",
       duration: "2024",
     },
     {
-      instituition: "Cisco",
-      degree: "Data Science",
+      instituition: (
+        <a href="https://cisco.com" target="_blank">
+          Cisco
+        </a>
+      ),
+      degree: "Introdution to Data Science",
       duration: "2024",
     },
     {
-      instituition: "Cisco",
-      degree: "Introduction To IoT",
+      instituition: (
+        <a href="https://cisco.com" target="_blank">
+          Cisco
+        </a>
+      ),
+      degree: "Introduction To Internet of Things",
       duration: "2024",
+    },
+    {
+      instituition: (
+        <a href="https://cisco.com" target="_blank">
+          Cisco
+        </a>
+      ),
+      degree: "Network Defence",
+      duration: "2025",
     },
   ],
 };
@@ -165,6 +222,18 @@ const skills = {
     {
       icon: <SiTypescript />,
       name: "typescript",
+    },
+    {
+      icon: <SiDotnet />,
+      name: "C#(.NET)",
+    },
+    {
+      icon: <SiPhp />,
+      name: "php",
+    },
+    {
+      icon: <SiSequelize />,
+      name: "sequelize",
     },
     {
       icon: <SiNextdotjs />,
@@ -295,11 +364,9 @@ const Resume = () => {
                           <div className="flex items-center gap-3">
                             {/*dot*/}
                             <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                            <a href="https://www.cotemig.com.br" target="blank">
-                              <p className="text-white/60 hover:text-accent transition-all">
-                                {item.instituition}
-                              </p>
-                            </a>
+                            <p className="text-white/60 hover:text-accent transition-all">
+                              {item.instituition}
+                            </p>
                           </div>
                         </li>
                       );

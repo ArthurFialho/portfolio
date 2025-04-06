@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
-
+import "@/app/globals.css";
 const projects = [
   {
     num: "01",
@@ -70,7 +70,7 @@ const projects = [
   },
   {
     num: "05",
-    category: "frontend",
+    category: "fullstack",
     title: "project 5",
     description:
       "This was my second hosted portfolio, built with CSS and JavaScript animations. It is fully responsive, features an interactive design based on UI/UX principles, and includes a dark mode.",
@@ -157,14 +157,15 @@ const Work = () => {
               {projects.map((project, index) => (
                 <SwiperSlide key={index} className="w-full">
                   <div className="h-[460px] relative group flex justify-center items-center">
-                    <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={project.image}
-                        fill
-                        className="object-cover rounded-[30px]"
-                        alt=""
-                      />
+                    <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10 hover-img">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={project.image}
+                          fill
+                          className="object-cover rounded-[30px]"
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
                 </SwiperSlide>
