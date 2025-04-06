@@ -21,7 +21,7 @@ const projects = [
     category: "frontend",
     title: "project 1",
     description:
-      "This was also developed during my first Origamid course. At the end of it. Is about electric bikes",
+      "This was also developed during my first Origamid course. At the end of it. Is about electric bikes.",
     stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
     image: "/assets/work/bikcraft.png",
     live: "https://arthurfialho.github.io/bikcraft/",
@@ -29,8 +29,23 @@ const projects = [
   },
   {
     num: "02",
-    category: "fullstack",
+    category: "frontend",
     title: "project 2",
+    description:
+      "An open source front-end project I developed using React, Tailwind CSS, and Three.js. I created an interactive, responsive, and immersive 3D book to explore new web experiences and experiment with 3D graphics.",
+    stack: [
+      { name: "React.js" },
+      { name: "Tailwind.css" },
+      { name: "Three.js" },
+    ],
+    image: "/assets/work/bookslider.png",
+    live: "https://booksliderproject.vercel.app/",
+    github: "https://github.com/ArthurFialho/booksliderproject",
+  },
+  {
+    num: "03",
+    category: "fullstack",
+    title: "project 3",
     description:
       "Ogani was developed as a reproduction of a website, at Cotemig high school, in 2024.",
     stack: [
@@ -43,9 +58,9 @@ const projects = [
     github: "https://github.com/ArthurFialho/reproducaodesiteogani",
   },
   {
-    num: "03",
+    num: "04",
     category: "frontend",
-    title: "project 3",
+    title: "project 4",
     description:
       "This project is SocaCan. It was built using Next.js, Node.js, and Tailwind CSS, featuring smooth CSS animations. The main goal of this project was to enhance my learning experience.",
     stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
@@ -54,9 +69,9 @@ const projects = [
     github: "https://github.com/ArthurFialho/sodacan",
   },
   {
-    num: "04",
+    num: "05",
     category: "frontend",
-    title: "project 4",
+    title: "project 5",
     description:
       "This was my second hosted portfolio, built with CSS and JavaScript animations. It is fully responsive, features an interactive design based on UI/UX principles, and includes a dark mode.",
     stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
