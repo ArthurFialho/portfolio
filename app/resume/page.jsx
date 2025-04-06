@@ -18,6 +18,7 @@ import {
   SiMysql,
   SiPostman,
   SiPython,
+  SiTypescript,
 } from "react-icons/si";
 
 //about data
@@ -160,6 +161,10 @@ const skills = {
     {
       icon: <FaReact />,
       name: "react.js",
+    },
+    {
+      icon: <SiTypescript />,
+      name: "typescript",
     },
     {
       icon: <SiNextdotjs />,
