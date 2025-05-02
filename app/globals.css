@@ -47,5 +47,5 @@
 .hover-img:hover {
   transform: scale(1.08); /* opcional - efeito leve de zoom */
   transition: 0.5s ease-in-out;
-  cursor: pointer;
+  cursor: move;
 }
