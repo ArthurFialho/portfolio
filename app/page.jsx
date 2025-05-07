@@ -20,7 +20,7 @@ const Home = () => {
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               I am a professional in UI/UX design and minimalist projects.
-              Front-end and back-end developer who writes clean and elegant
+              Back-end and front-end developer who writes clean and elegant
               code, crafting amazing digital experiences.
             </p>
             {/* {btn and socials} */}
