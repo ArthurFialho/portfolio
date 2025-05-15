@@ -3,6 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
 
 import {
   Select,
@@ -34,9 +37,57 @@ const info = [
   },
 ];
 
-import { motion } from "framer-motion";
-
 const Contact = () => {
+  function formatTelefone(value) {
+    let tel = value;
+
+    // Adiciona "(" no início se não tiver
+    if (tel.length > 0 && tel[0] !== "(") {
+      tel = "(" + tel;
+    }
+
+    // Adiciona ")" no índice 3 se não tiver (ex: (12) )
+    if (tel.length > 3 && tel[3] !== ")") {
+      tel = tel.slice(0, 3) + ")" + tel.slice(3);
+    }
+
+    // Adiciona "-" no índice 9 se não tiver (ex: (12) 34567- )
+    if (tel.length > 9 && tel[9] !== "-") {
+      tel = tel.slice(0, 9) + "-" + tel.slice(9);
+    }
+
+    // Limita o tamanho máximo (por exemplo 15 caracteres)
+    if (tel.length > 14) {
+      tel = tel.slice(0, 14);
+    }
+
+    return tel;
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const result = await emailjs.send(
+        "service_pxwgsni",
+        "template_k2vxqyq",
+        formData,
+        "YDCgglTGYSwfizLTX" // ou "public key" no painel EmailJS
+      );
+      alert("Mensagem enviada com sucesso!");
+    } catch (error) {
+      console.error("Erro ao enviar:", error);
+      alert("Erro ao enviar a mensagem.");
+    }
+  };
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -49,7 +100,10 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:h-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent font-extrabold">
                 Let's work together!
               </h3>
@@ -60,37 +114,80 @@ const Contact = () => {
                 something amazing together!
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
-              </div>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel className="text-accent text-xl">
-                      Select a service
-                    </SelectLabel>
-                    <SelectItem value="web-dev">Web Development</SelectItem>
-                    <SelectItem value="backend-frontend-support">
-                      Back End/Front End Support
-                    </SelectItem>
-                    <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
-                    <SelectItem value="logo-design">Logo Design</SelectItem>
-                    <SelectItem value="hire-me">
-                      Hire me for a position
-                    </SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+                <Input
+                  type="text"
+                  placeholder="Firstname"
+                  value={formData.firstname}
+                  onChange={(e) =>
+                    setFormData({ ...formData, firstname: e.target.value })
+                  }
+                />
 
-              <Textarea
-                className="h-[200px]"
-                placeholder="Type your message here."
-              />
+                <Input
+                  type="text"
+                  placeholder="Lastname"
+                  value={formData.lastname}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lastname: e.target.value })
+                  }
+                />
+
+                <Input
+                  type="email"
+                  placeholder="Email address"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+
+                <Input
+                  type="tel"
+                  placeholder="Phone number"
+                  value={formData.phone}
+                  onChange={(e) => {
+                    const formatted = formatTelefone(e.target.value);
+                    setFormData({ ...formData, phone: formatted });
+                  }}
+                  maxLength={15} // opcional para evitar digitação além do esperado
+                />
+
+                <Select
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, service: value })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel className="text-accent text-xl">
+                        Select a service
+                      </SelectLabel>
+                      <SelectItem value="web-dev">Web Development</SelectItem>
+                      <SelectItem value="backend-frontend-support">
+                        Back End/Front End Support
+                      </SelectItem>
+                      <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
+                      <SelectItem value="logo-design">Logo Design</SelectItem>
+                      <SelectItem value="hire-me">
+                        Hire me for a position
+                      </SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+
+                <Textarea
+                  className="h-[200px]"
+                  placeholder="Type your message here."
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                />
+              </div>
+
               <Button
                 size="md"
                 className="uppercase flex items-center gap-2 border max-w-40 border-accent text-primary hover:bg-accent hover:text-white hover:border-white transition-all duration-500"
