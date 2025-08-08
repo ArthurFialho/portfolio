@@ -13,9 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Arthur Fialho - Portfolio",
+  title: "Hire Arthur Fialho",
   description:
-    "Arthur Fialho's Portfolio - Full Stack Developer & UI/UX Designer.",
+    "Arthur Fialho's Portfolio - full stack developer & software engineer.",
 };
 
 export default function RootLayout({ children }) {
