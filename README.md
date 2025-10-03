@@ -47,7 +47,6 @@ Developed with cutting-edge technologies to deliver smooth, high-performance use
 - Interactive hover states and skeleton loading  
 - Mobile-first responsive design  
 - Performance optimized (95+ Lighthouse score)  
-- Dark/Light mode and custom design system  
 - Accessible and intuitive navigation
 
 🚀 **Getting Started**
