@@ -78,6 +78,17 @@ const projects = [
     image: "/assets/work/portfoliodev.png",
     live: "https://arthurfialho.github.io/portfoliodev/",
     github: "https://github.com/ArthurFialho/portfoliodev",
+  }, 
+  {
+    num: "06",
+    category: "fullstack",
+    title: "project 6",
+    description:
+      "I built the official website for Manoel Macedo Art Gallery, creating a modern platform to improve the gallery’s digital visibility and organize artists, artworks, and content.",
+    stack: [{ name: "React.js" }, { name: "Tailwind.css" }, { name: "Framer Motion" }, { name: "SQL" }, { name: "Supabase" }],
+    image: "/assets/work/manoelmacedo.png",
+    live: "https://manoelmacedo.vercel.app/",
+    github: "",
   },
 ];
 
