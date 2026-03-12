@@ -73,12 +73,30 @@ const experience = {
   items: [
     {
       company: (
+        <a href="https://solarview.com.br" target="_blank">
+          SolarView
+        </a>
+      ),
+      position: "Full-stack Developer Junior II",
+      duration: "January 2026 - Present",
+    },
+    {
+      company: (
+        <a href="https://azapfy.com.br" target="_blank">
+          Azapfy
+        </a>
+      ),
+      position: "Back-end Development Intern",
+      duration: "June 2025 - December 2025",
+    },
+    {
+      company: (
         <a href="https://codemaps.com.br" target="_blank">
           Geocode Systems
         </a>
       ),
       position: "Full-stack Development Intern",
-      duration: "September 2024 - Present",
+      duration: "September 2024 - June 2025",
     },
     {
       company: (
