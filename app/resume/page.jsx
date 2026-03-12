@@ -77,7 +77,7 @@ const experience = {
           SolarView
         </a>
       ),
-      position: "Full-stack Developer Junior II",
+      position: "Full-stack Software Developer Junior II",
       duration: "January 2026 - Present",
     },
     {
