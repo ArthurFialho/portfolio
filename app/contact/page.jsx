@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
+import DotGrid from "@/components/bgs/DotGrid";
 
 import {
   Select,
@@ -89,15 +90,29 @@ const Contact = () => {
     message: "",
   });
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
-      }}
-      className="py-6"
-    >
-      <div className="container mx-auto">
+    <>
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
+        <DotGrid
+          dotSize={5}
+          gap={15}
+          baseColor="#271E37"
+          activeColor="#66D2CE"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        }}
+        className="py-6 relative z-10 mt-24"
+      >
+        <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:h-[54%] order-2 xl:order-none">
             <form
@@ -197,7 +212,7 @@ const Contact = () => {
             </form>
           </div>
           <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
-            <ul className="flex flex-col gap-10">
+            <ul className="flex flex-col gap-10 bg-[#27272c]/80 backdrop-blur-sm p-10 rounded-xl">
               {info.map((item, index) => {
                 return (
                   <li key={index} className="flex items-center gap-6">
@@ -216,6 +231,7 @@ const Contact = () => {
         </div>
       </div>
     </motion.section>
+    </>
   );
 };
 
