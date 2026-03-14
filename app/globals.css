@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  ::selection {
+    background: transparent;
+  }
+
+  ::-moz-selection {
+    background: transparent;
+  }
+
   body {
     @apply font-primary bg-primary text-white leading-loose;
   }
