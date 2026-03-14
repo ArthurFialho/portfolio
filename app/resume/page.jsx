@@ -5,23 +5,23 @@ import {
   FaCss3,
   FaJs,
   FaReact,
-  FaFigma,
   FaNodeJs,
+  FaAws,
 } from "react-icons/fa";
 
 import {
   SiTailwindcss,
   SiNextdotjs,
   SiNodedotjs,
-  SiFigma,
   SiPostgresql,
   SiMysql,
-  SiPostman,
-  SiPython,
   SiTypescript,
   SiDotnet,
   SiPhp,
-  SiSequelize,
+  SiDocker,
+  SiRabbitmq,
+  SiCloudflare,
+  SiGo,
 } from "react-icons/si";
 
 //about data
@@ -39,7 +39,7 @@ const about = {
     },
     {
       fieldName: "Experience",
-      fieldValue: "4+ Years",
+      fieldValue: "3+ Years",
     },
     {
       fieldName: "Email",
@@ -238,6 +238,26 @@ const skills = {
       name: "react.js",
     },
     {
+      icon: <SiDocker />,
+      name: "Docker",
+    },
+    {
+      icon: <SiRabbitmq />,
+      name: "RabbitMQ",
+    },
+    {
+      icon: <SiCloudflare />,
+      name: "Cloudflare",
+    },
+    {
+      icon: <FaAws />,
+      name: "AWS",
+    },
+    {
+      icon: <SiGo />,
+      name: "Go",
+    },
+    {
       icon: <SiTypescript />,
       name: "typescript",
     },
@@ -248,10 +268,6 @@ const skills = {
     {
       icon: <SiPhp />,
       name: "php",
-    },
-    {
-      icon: <SiSequelize />,
-      name: "sequelize",
     },
     {
       icon: <SiNextdotjs />,
@@ -266,25 +282,13 @@ const skills = {
       name: "node.js",
     },
     {
-      icon: <SiFigma />,
-      name: "Figma",
-    },
-    {
       icon: <SiPostgresql />,
       name: "PostgreSQl",
     },
     {
       icon: <SiMysql />,
       name: "MySQL",
-    },
-    {
-      icon: <SiPostman />,
-      name: "Postman",
-    },
-    {
-      icon: <SiPython />,
-      name: "Python",
-    },
+    }
   ],
 };
 
@@ -300,6 +304,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
 import GridMotion from "@/components/bgs/GridMotion";
+import Footer from "@/components/Footer";
 
 const Resume = () => {
   return (
@@ -494,6 +499,9 @@ const Resume = () => {
           </Tabs>
         </div>
       </motion.div>
+      <div className="relative z-[100]">
+        <Footer />
+      </div>
     </>
   );
 };

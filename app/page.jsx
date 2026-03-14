@@ -6,6 +6,7 @@ import { FiDownload } from "react-icons/fi";
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
+import Footer from "@/components/Footer";
 import Ballpit from "@/components/bgs/Ballpit";
 
 const Home = () => {
@@ -69,6 +70,9 @@ const Home = () => {
         </div>
         <Stats />
       </section>
+      <div className="relative z-[100] mt-28 xl:mt-28">
+        <Footer />
+      </div>
     </>
   );
 };

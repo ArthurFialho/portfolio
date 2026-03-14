@@ -7,6 +7,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import DotGrid from "@/components/bgs/DotGrid";
+import Footer from "@/components/Footer";
 
 import {
   Select,
@@ -231,6 +232,9 @@ const Contact = () => {
           </div>
         </div>
       </motion.section>
+      <div className="relative z-[100]">
+        <Footer />
+      </div>
     </>
   );
 };

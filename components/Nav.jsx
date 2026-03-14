@@ -1,46 +1,34 @@
 "use client";
 
 import Link from "next/link";
-
 import { usePathname } from "next/navigation";
 
+
 const links = [
-  {
-    name: "home",
-    path: "/",
-  },
-  {
-    name: "services",
-    path: "/services",
-  },
-  {
-    name: "resume",
-    path: "/resume",
-  },
-  {
-    name: "work",
-    path: "/work",
-  },
-  {
-    name: "contact",
-    path: "/contact",
-  },
+  { name: "home", path: "/" },
+  { name: "services", path: "/services" },
+  { name: "resume", path: "/resume" },
+  { name: "work", path: "/work" },
+  { name: "contact", path: "/contact" },
 ];
 
 const Nav = () => {
   const pathname = usePathname();
   return (
-    <nav className="flex gap-8">
+    <nav className="flex gap-10">
       {links.map((link, index) => {
+        const isActive = link.path === pathname;
         return (
           <Link
             href={link.path}
             key={index}
-            className={`${
-              link.path === pathname && "text-accent border-b-2 border-accent"
-            } capitalize font-medium hover:text-accent transition-all`}
+            data-text={link.name}
+            className={`nav-link relative uppercase text-sm font-semibold tracking-widest py-1.5
+              transition-colors duration-300
+              ${isActive ? "text-accent" : "text-white/40 hover:text-white/40"}
+            `}
           >
-            {link.name}
+            <span className="relative z-10">{link.name}</span>
           </Link>
         );
       })}

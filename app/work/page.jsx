@@ -15,6 +15,7 @@ import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
 import RippleGrid from "@/components/bgs/RippleGrid";
+import Footer from "@/components/Footer";
 import "@/app/globals.css";
 const projects = [
   {
@@ -205,6 +206,9 @@ const Work = () => {
           </div>
         </div>
       </motion.section>
+      <div className="relative z-[100]">
+        <Footer />
+      </div>
     </>
   );
 };
