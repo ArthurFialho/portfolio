@@ -8,6 +8,38 @@ import { GridScan } from "@/components/bgs/GridScan";
 
 import "./pulse.css";
 
+const ServiceCard = ({ service }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className="flex-1 flex-col justify-center gap-6 group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="w-full flex justify-between items-center">
+        <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-accent transition-all">
+          {service.num}
+        </div>
+        <Link
+          target="_blank"
+          href={service.href}
+          className={`w-[70px] h-[70px] rounded-full bg-accent group-hover:bg-accent-hover transition-all duration-500 flex justify-center items-center hover:-rotate-45 ${
+            isHovered ? "pulse" : ""
+          }`}
+        >
+          <BsArrowDownRight className="text-primary text-3xl hover:fill-white transition-all" />
+        </Link>
+      </div>
+      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 mb-3 mt-3">
+        {service.title}
+      </h2>
+      <p className="text-white/60 mb-2">{service.description}</p>
+      <div className="border-b border-white/20 w-full"></div>
+    </div>
+  );
+};
+
 const services = [
   {
     num: "01",
@@ -81,38 +113,9 @@ const Services = () => {
           }}
           className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
         >
-          {services.map((service, index) => {
-            const [isHovered, setIsHovered] = useState(false);
-
-            return (
-              <div
-                key={index}
-                className="flex-1 flex-col justify-center gap-6 group"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                <div className="w-full flex justify-between items-center">
-                  <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-accent transition-all">
-                    {service.num}
-                  </div>
-                  <Link
-                    target="_blank"
-                    href={service.href}
-                    className={`w-[70px] h-[70px] rounded-full bg-accent group-hover:bg-accent-hover transition-all duration-500 flex justify-center items-center hover:-rotate-45 ${
-                      isHovered ? "pulse" : ""
-                    }`}
-                  >
-                    <BsArrowDownRight className="text-primary text-3xl hover:fill-white transition-all" />
-                  </Link>
-                </div>
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 mb-3 mt-3">
-                  {service.title}
-                </h2>
-                <p className="text-white/60 mb-2">{service.description}</p>
-                <div className="border-b border-white/20 w-full"></div>
-              </div>
-            );
-          })}
+          {services.map((service, index) => (
+            <ServiceCard key={index} service={service} />
+          ))}
         </motion.div>
       </div>
       </section>

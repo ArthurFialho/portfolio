@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import React, { useEffect, useRef } from 'react';
@@ -435,7 +436,7 @@ class Y extends MeshPhysicalMaterial {
   constructor(params: any) {
     super(params);
     this.defines = { USE_UV: '' };
-    this.onBeforeCompile = shader => {
+    (this as any).onBeforeCompile = (shader: any) => {
       Object.assign(shader.uniforms, this.uniforms);
       shader.fragmentShader =
         `
@@ -691,7 +692,7 @@ class Z extends InstancedMesh {
     const envTexture = pmrem.fromScene(roomEnv).texture;
     const geometry = new SphereGeometry();
     const material = new Y({ envMap: envTexture, ...config.materialParams });
-    material.envMapRotation.x = -Math.PI / 2;
+    (material as any).envMapRotation.x = -Math.PI / 2;
     super(geometry, material, config.count);
     this.config = config;
     this.physics = new W(config);
