@@ -91,7 +91,7 @@ const Contact = () => {
   });
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 1, backgroundColor: '#1c1c22' }}>
         <DotGrid
           dotSize={5}
           gap={15}

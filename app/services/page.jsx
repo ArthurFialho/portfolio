@@ -56,7 +56,7 @@ const services = [
 const Services = () => {
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 1, backgroundColor: '#1c1c22' }}>
         <GridScan
           sensitivity={0.55}
           lineThickness={1}

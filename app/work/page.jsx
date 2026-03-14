@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
-import LightPillar from "@/components/bgs/LightPillar";
+import RippleGrid from "@/components/bgs/RippleGrid";
 import "@/app/globals.css";
 const projects = [
   {
@@ -103,20 +103,16 @@ const Work = () => {
 
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
-        <LightPillar
-          topColor="#5227FF"
-          bottomColor="#FF9FFC"
-          intensity={1}
-          rotationSpeed={0.3}
-          glowAmount={0.002}
-          pillarWidth={3}
-          pillarHeight={0.4}
-          noiseIntensity={0.5}
-          pillarRotation={25}
-          interactive={false}
-          mixBlendMode="screen"
-          quality="high"
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 1, backgroundColor: '#1c1c22' }}>
+        <RippleGrid
+          enableRainbow={false}
+          gridColor="#66D2CE"
+          rippleIntensity={0.05}
+          gridSize={10}
+          gridThickness={15}
+          mouseInteraction={true}
+          mouseInteractionRadius={1.2}
+          opacity={0.8}
         />
       </div>
       <motion.section
