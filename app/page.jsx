@@ -1,15 +1,31 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
-//components
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
+import Particles from "@/components/bgs/Particles";
 
 const Home = () => {
   return (
-    <section className="h-full">
-      <div className="container mx-auto h-full">
+    <>
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
+        <Particles
+          particleColors={["#ffffff"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />
+      </div>
+      <section className="h-full relative z-10 mt-24">
+        <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row items-center justify-between xlpt-8 xl:pb-24">
           {/* {text} */}
           <div className="text-center xl:text-left order-2 xl:order-none">
@@ -56,6 +72,7 @@ const Home = () => {
       </div>
       <Stats />
     </section>
+    </>
   );
 };
 

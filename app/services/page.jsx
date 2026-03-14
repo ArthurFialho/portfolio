@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { GridScan } from "@/components/bgs/GridScan";
 
 import "./pulse.css";
 
@@ -54,8 +55,24 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
-      <div className="container mx-auto">
+    <>
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#392e4e"
+          gridScale={0.1}
+          scanColor="#66D2CE"
+          scanOpacity={0.4}
+          scanDuration={6.0}
+          enablePost
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+        />
+      </div>
+      <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 relative z-10 mt-24">
+        <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{
@@ -98,7 +115,8 @@ const Services = () => {
           })}
         </motion.div>
       </div>
-    </section>
+      </section>
+    </>
   );
 };
 
