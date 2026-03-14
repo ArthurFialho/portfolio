@@ -87,7 +87,7 @@ const experience = {
         </a>
       ),
       position: "Back-end Development Intern",
-      duration: "June 2025 - December 2025",
+      duration: "July 2025 - December 2025",
     },
     {
       company: (
