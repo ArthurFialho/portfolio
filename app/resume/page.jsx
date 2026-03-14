@@ -51,7 +51,7 @@ const about = {
     },
     {
       fieldName: "Education",
-      fieldValue: "Technical Course at COTEMIG",
+      fieldValue: "Software Engineering at PUC-MG",
     },
     {
       fieldName: "Freelance",
@@ -59,7 +59,7 @@ const about = {
     },
     {
       fieldName: "Languages",
-      fieldValue: "Portuguese, English, French",
+      fieldValue: "Portuguese, English, German",
     },
   ],
 };
@@ -234,6 +234,10 @@ const skills = {
       name: "javascript",
     },
     {
+      icon: <SiTypescript />,
+      name: "typescript",
+    },
+    {
       icon: <FaReact />,
       name: "react.js",
     },
@@ -255,11 +259,7 @@ const skills = {
     },
     {
       icon: <SiGo />,
-      name: "Go",
-    },
-    {
-      icon: <SiTypescript />,
-      name: "typescript",
+      name: "Golang",
     },
     {
       icon: <SiDotnet />,

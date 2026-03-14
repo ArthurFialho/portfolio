@@ -913,6 +913,11 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
   const canvasRef = useRef(null);
   const [activeItem, setActiveItem] = useState(null);
   const [isMoving, setIsMoving] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -946,7 +951,7 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [items, scale]);
+  }, [items, scale, mounted]);
 
   const openLink = (url) => {
     if (!url) return;
@@ -956,43 +961,50 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
   };
 
   const buttonBaseClasses = `
-    w-[60px] h-[60px] grid place-items-center
+    w-14 h-14 min-w-[56px] min-h-[56px] sm:w-[60px] sm:h-[60px]
+    grid place-items-center
     rounded-full cursor-pointer transition-all duration-300 ease-out
     bg-accent text-primary border-2 border-accent
     hover:bg-primary hover:text-accent hover:border-accent hover:scale-110
-    active:scale-95
+    active:scale-95 touch-manipulation
   `;
 
   const buttonContainerClasses = `
-    absolute left-1/2 z-10 flex gap-3 -translate-x-1/2
+    absolute left-1/2 flex gap-3 -translate-x-1/2 pointer-events-auto
     transition-all ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+    bottom-4 sm:bottom-[3.8em]
     ${isMoving
-      ? 'bottom-[-80px] opacity-0 pointer-events-none duration-[100ms] scale-0'
-      : 'bottom-[3.8em] opacity-100 pointer-events-auto duration-[500ms] scale-100'
+      ? 'opacity-0 pointer-events-none duration-[100ms] scale-0 -z-10'
+      : 'opacity-100 duration-[500ms] scale-100'
     }
   `;
 
   const hasLive = activeItem?.live || activeItem?.link;
   const hasGithub = activeItem?.github;
 
+  if (!mounted) {
+    return <div className="relative w-full h-full bg-transparent" />;
+  }
+
   return (
     <div className="relative w-full h-full bg-transparent">
       <canvas
         id="infinite-grid-menu-canvas"
         ref={canvasRef}
-        className="cursor-grab w-full h-full overflow-hidden relative outline-none active:cursor-grabbing bg-transparent rounded-[3rem]"
+        className="cursor-grab w-full h-full overflow-hidden relative outline-none active:cursor-grabbing bg-transparent rounded-[3rem] z-0"
       />
 
       {activeItem && (
-        <>
+        <div className="absolute inset-0 z-50 pointer-events-none">
           <div
             className={`
               absolute left-0 top-0 pl-4 pt-4 md:pl-8 md:pt-8
               flex flex-col gap-3 max-w-[min(45ch,85%)]
               transition-all ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+              pointer-events-auto
               ${isMoving
-                ? 'opacity-0 pointer-events-none duration-[100ms]'
-                : 'opacity-100 pointer-events-auto duration-[500ms]'
+                ? 'opacity-0 duration-[100ms]'
+                : 'opacity-100 duration-[500ms]'
               }
             `}
           >
@@ -1037,7 +1049,7 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
               </div>
             )}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

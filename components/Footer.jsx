@@ -46,9 +46,9 @@ const Footer = () => {
 
   return (
     <motion.footer
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      initial="visible"
+      animate="visible"
+      viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
       className={`relative z-[100] border-t border-white/10 transition-all duration-300 ${
         scrolled ? "bg-primary/90 backdrop-blur-md" : "bg-transparent"

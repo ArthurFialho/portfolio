@@ -60,7 +60,7 @@ const projects = [
 
 const Work = () => {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <div
         style={{
           position: "fixed",
@@ -83,23 +83,20 @@ const Work = () => {
         />
       </div>
       <motion.section
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
-        }}
-        className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0 relative z-10 mt-24"
+        initial={false}
+        animate={{ opacity: 1 }}
+        className="flex-1 flex flex-col justify-center py-12 xl:px-0 relative z-10 mt-24"
       >
-        <div className="container mx-auto">
-          <div style={{ height: "600px", position: "relative" }}>
+        <div className="container mx-auto px-4">
+          <div className="relative h-[400px] sm:h-[500px] xl:h-[600px] min-h-[350px]">
             <InfiniteMenu items={projects} scale={1} />
           </div>
         </div>
       </motion.section>
-      <div className="relative z-[100]">
+      <div className="relative z-[100] shrink-0">
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 
