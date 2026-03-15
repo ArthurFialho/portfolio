@@ -124,3 +124,15 @@
 .active-link .char {
   color: theme('colors.accent.DEFAULT');
 }
+
+/* Photo fade-in - CSS animation evita stacking context do Framer que bloqueia mix-blend */
+.photo-fade-in {
+  opacity: 0;
+  animation: photo-fade-in 0.5s 2.4s ease-in-out forwards;
+}
+
+@keyframes photo-fade-in {
+  to {
+    opacity: 1;
+  }
+}

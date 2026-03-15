@@ -124,7 +124,7 @@ const education = {
   items: [
     {
       instituition: (
-        <a href="https://pucmg.br" target="_blank">
+        <a href="https://www.pucminas.br/destaques/Paginas/default.aspx" target="_blank">
           PUC-MG
         </a>
       ),
