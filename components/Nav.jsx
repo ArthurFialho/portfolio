@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-
 const links = [
   { name: "home", path: "/" },
   { name: "services", path: "/services" },
@@ -15,20 +14,43 @@ const links = [
 const Nav = () => {
   const pathname = usePathname();
   return (
-    <nav className="flex gap-10">
+    <nav className="flex gap-11">
       {links.map((link, index) => {
         const isActive = link.path === pathname;
         return (
           <Link
             href={link.path}
             key={index}
-            data-text={link.name}
-            className={`nav-link relative uppercase text-sm font-semibold tracking-widest py-1.5
-              transition-colors duration-300
-              ${isActive ? "text-accent" : "text-white/40 hover:text-white/40"}
-            `}
+            className={`nav-link relative py-2 overflow-hidden ${isActive ? "active-link" : ""}`}
           >
-            <span className="relative z-10">{link.name}</span>
+            {/* Letras originais */}
+            <div className="word flex">
+              {link.name.split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="char"
+                  style={{ transitionDelay: `${i * 0.03}s` }}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
+
+            {/* Letras fantasma (accent) */}
+            <div className="word-ghost flex absolute top-0 left-0">
+              {link.name.split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="char-ghost"
+                  style={{ transitionDelay: `${i * 0.03}s` }}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
+
+            {/* Ponto indicador de ativo */}
+            <span className="dot" />
           </Link>
         );
       })}

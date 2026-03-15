@@ -112,7 +112,7 @@ const Services = () => {
           >
             <h1 className="text-4xl xl:text-5xl font-bold mb-4">My Services</h1>
             <p className="text-white/60 text-lg max-w-2xl">
-              What I offer as a Software Engineer and Full Stack Developer.
+              What I offer as a Software Engineer and <span className="text-accent">Full Stack Developer</span>.
             </p>
           </motion.div>
           <motion.div

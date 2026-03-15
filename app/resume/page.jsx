@@ -69,7 +69,7 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "I work as an intern at Geocode, developing software solutions focused on mapping and communication. I have experience in programming, UI/UX design, and databases, and I'm passionate about logo design.",
+    "Experience isn't a list of job titles. It's the sum of every problem that forced me to learn something new, every deadline that required a decision, and every system I had to understand before I could fix it. Here's the trail.",
   items: [
     {
       company: (
@@ -108,15 +108,10 @@ const experience = {
       duration: "June 2024 - September 2024",
     },
     {
-      company: "Web Design Studio",
-      position: "Front-End Developer Intern",
-      duration: "January 2023 - March 2024",
-    },
-    {
-      company: "Tech Academy Brazil",
-      position: "Freelance Web Developer",
-      duration: "September 2023 - Nov. 2023",
-    },
+      company: "Self-Employed",
+      position: "Freelance Full Stack Developer",
+      duration: "January 2024 - Present",
+    }
   ],
 };
 
@@ -125,8 +120,26 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My Education",
   description:
-    "I'm currently in my third year of technical studies at COTEMIG, where I participate as both a student and a mentor in CodeClub. I’ve also completed HTML & CSS (2023) and JavaScript (2024) courses at Origamid, enhancing my web development skills.",
+    "After completing my technical course in computer networks and architecture and project management at COTEMIG, I am continuing my undergraduate studies in software engineering at PUC-MG. Furthermore, I have a lot of certifications in the field of software engineering and development.",
   items: [
+    {
+      instituition: (
+        <a href="https://pucmg.br" target="_blank">
+          PUC-MG
+        </a>
+      ),
+      degree: "Software Engineering Bachelor's Degree",
+      duration: "Jan. 2026 - Present",
+    },
+    {
+      instituition: (
+        <a href="https://cotemig.com.br" target="_blank">
+          Cotemig
+        </a>
+      ),
+      degree: "Technical Course in Programming and IT",
+      duration: "Feb. 2023 - December 2025",
+    },
     {
       instituition: (
         <a href="https://origamid.com" target="_blank">
@@ -153,29 +166,6 @@ const education = {
       ),
       degree: "UI/UX Complete Course",
       duration: "2024",
-    },
-    {
-      instituition: (
-        <a href="https://cotemig.com.br" target="_blank">
-          Cotemig
-        </a>
-      ),
-      degree: "Technical Course in Programming and IT",
-      duration: "February 2023 - December 2025",
-    },
-    {
-      instituition: (
-        <a href="https://cotemig.com.br" target="_blank">
-          Cotemig
-        </a>
-      ),
-      degree: "CodeClub - Studant",
-      duration: "2024",
-    },
-    {
-      instituition: "The Odin Project",
-      degree: "Complete React Course",
-      duration: "December 2024 - Present",
     },
     {
       instituition: (
@@ -219,7 +209,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "I have strong skills in front-end and back-end development, with a focus on modern technologies like React, Next.js, and Node.js.",
+    "I don't have a favorite language. I have a favorite outcome: software that works, that scales, and that someone else can maintain after I'm gone. The tools I use are the ones that get there fastest without cutting corners.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -411,6 +401,9 @@ const Resume = () => {
               <TabsContent value="education" className="w-full">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
                   <h3 className="text-4xl font-bold">{education.title}</h3>
+                  <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                    {education.description}
+                  </p>
                   <ScrollArea className="h-[400px]">
                     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                       {education.items.map((item, index) => {

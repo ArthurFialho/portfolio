@@ -12,14 +12,6 @@ const socials = [
   { icon: <FaInstagram />, path: "https://www.instagram.com/arthurfialho_/", label: "Instagram" },
 ];
 
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Services", path: "/services" },
-  { name: "Resume", path: "/resume" },
-  { name: "Work", path: "/work" },
-  { name: "Contact", path: "/contact" },
-];
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -50,34 +42,21 @@ const Footer = () => {
       animate="visible"
       viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
-      className={`relative z-[100] border-t border-white/10 transition-all duration-300 ${
-        scrolled ? "bg-primary/90 backdrop-blur-md" : "bg-transparent"
-      }`}
+      className={`relative z-[100] border-t border-white/10 transition-all duration-300 ${scrolled ? "bg-primary/90 backdrop-blur-md" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-6 py-6">
         <div className="flex flex-col xl:flex-row justify-between items-center gap-10">
           <motion.div variants={itemVariants} className="flex flex-col items-center xl:items-start gap-4">
             <Link href="/">
               <h2 className="text-3xl font-semibold title-hover">
-                Arthur <span className="text-accent">.</span>
+                arthur <span className="text-accent">.</span>
               </h2>
             </Link>
             <p className="text-white/50 text-sm max-w-[300px] text-center xl:text-left">
               Full Stack Software Engineer
             </p>
           </motion.div>
-
-          <motion.nav variants={itemVariants} className="flex flex-wrap justify-center gap-6">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.path}
-                className="text-white/60 hover:text-accent transition-all duration-300 text-sm capitalize"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </motion.nav>
 
           <motion.div variants={itemVariants} className="flex gap-4">
             {socials.map((item, index) => (

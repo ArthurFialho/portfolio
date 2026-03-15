@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import DotGrid from "@/components/bgs/DotGrid";
 import Footer from "@/components/Footer";
@@ -92,7 +91,7 @@ const Contact = () => {
   });
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 1, backgroundColor: '#1c1c22' }}>
+      <div style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", zIndex: 1, backgroundColor: "#1c1c22" }}>
         <DotGrid
           dotSize={5}
           gap={15}
@@ -105,14 +104,7 @@ const Contact = () => {
           returnDuration={1.5}
         />
       </div>
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
-        }}
-        className="py-6 relative z-10 mt-24"
-      >
+      <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-16 relative z-10 mt-24">
         <div className="container mx-auto">
           <div className="flex flex-col xl:flex-row gap-[30px]">
             <div className="xl:h-[54%] order-2 xl:order-none">
@@ -231,7 +223,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
       <div className="relative z-[100]">
         <Footer />
       </div>

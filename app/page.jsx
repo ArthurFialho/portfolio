@@ -22,9 +22,9 @@ const Home = () => {
           colors={[0x66D2CE, 0x2DAA9E, 0x1c1c22]}
         />
       </div>
-      <section className="h-full relative z-10 mt-24">
+      <section className="h-full relative z-10 mt-28 sm:mt-32 xl:mt-28 pt-8 sm:pt-12 xl:pt-16">
         <div className="container mx-auto h-full">
-          <div className="flex flex-col xl:flex-row items-center justify-between xlpt-8 xl:pb-24">
+          <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
             {/* {text} */}
             <div className="text-center xl:text-left order-2 xl:order-none">
               <span className="text-xl">Full Stack Software Developer & Designer</span>
@@ -33,9 +33,9 @@ const Home = () => {
                 <span className="title-name">Arthur Fialho</span>
               </h1>
               <p className="max-w-[500px] mb-9 text-white/80">
-                I am a professional in UI/UX design and minimalist projects.
-                Back-end and front-end developer who writes clean and elegant
-                code, crafting amazing digital experiences.
+                Software Engineer with a full stack mindset and a problem-first approach.
+                I don't get attached to languages, i get attached to results.
+                Currently building things that work, from both ends of the stack.
               </p>
               {/* {btn and socials} */}
               <div className="flex flex-col xl:flex-row items-center gap-8">

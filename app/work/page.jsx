@@ -9,16 +9,16 @@ import "@/app/globals.css";
 
 const projects = [
   {
-    image: "/assets/work/bikcraft.png",
-    title: "project 1",
+    image: "/assets/work/manoelmacedo.png",
+    title: "Manoel Macedo",
     description:
-      "This was also developed during my first Origamid course. At the end of it. Is about electric bikes.",
-    live: "https://arthurfialho.github.io/bikcraft/",
-    github: "https://github.com/ArthurFialho/bikcraft",
+      "I built the official website for Manoel Macedo Art Gallery, creating a modern platform to improve the gallery's digital visibility and organize artists, artworks, and content.",
+    live: "https://manoelmacedo.com.br/",
+    github: "https://manoelmacedo.vercel.app/",
   },
   {
     image: "/assets/work/bookslider.png",
-    title: "project 2",
+    title: "BookSlider",
     description:
       "An open source front-end project I developed using React, Tailwind CSS, and Three.js. I created an interactive, responsive, and immersive 3D book to explore new web experiences and experiment with 3D graphics.",
     live: "https://booksliderproject.vercel.app/",
@@ -26,7 +26,7 @@ const projects = [
   },
   {
     image: "/assets/work/ogani.png",
-    title: "project 3",
+    title: "Ogani",
     description:
       "Ogani was developed as a reproduction of a website, at Cotemig high school, in 2024.",
     live: "https://arthurfialho.github.io/reproducaodesiteogani/",
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     image: "/assets/work/sodacan.png",
-    title: "project 4",
+    title: "SocaCan",
     description:
       "This project is SocaCan. It was built using Next.js, Node.js, and Tailwind CSS, featuring smooth CSS animations. The main goal of this project was to enhance my learning experience.",
     live: "https://arthurfialho.github.io/sodacan/",
@@ -42,20 +42,21 @@ const projects = [
   },
   {
     image: "/assets/work/portfoliodev.png",
-    title: "project 5",
+    title: "PortfolioDev",
     description:
       "This was my second hosted portfolio, built with CSS and JavaScript animations. It is fully responsive, features an interactive design based on UI/UX principles, and includes a dark mode.",
     live: "https://arthurfialho.github.io/portfoliodev/",
     github: "https://github.com/ArthurFialho/portfoliodev",
   },
   {
-    image: "/assets/work/manoelmacedo.png",
-    title: "project 6",
+    image: "/assets/work/bikcraft.png",
+    title: "Bikcraft",
     description:
-      "I built the official website for Manoel Macedo Art Gallery, creating a modern platform to improve the gallery's digital visibility and organize artists, artworks, and content.",
-    live: "https://manoelmacedo.com.br/",
-    github: "https://manoelmacedo.vercel.app/",
+      "This was also developed during my first Origamid course. At the end of it. Is about electric bikes.",
+    live: "https://arthurfialho.github.io/bikcraft/",
+    github: "https://github.com/ArthurFialho/bikcraft",
   },
+
 ];
 
 const Work = () => {
