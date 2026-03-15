@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
@@ -8,20 +10,36 @@ import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
 import Ballpit from "@/components/bgs/Ballpit";
+import BallpitToggle from "@/components/BallpitToggle";
 
 const Home = () => {
+  const [ballpitEnabled, setBallpitEnabled] = useState(true);
+
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 1, backgroundColor: '#1c1c22' }}>
-        <Ballpit
-          count={135}
-          gravity={0.01}
-          friction={0.9975}
-          wallBounce={0.95}
-          followCursor={false}
-          colors={[0x66D2CE, 0x2DAA9E, 0x1c1c22]}
-        />
+      <div style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", zIndex: 1, backgroundColor: "#1c1c22" }}>
+        <AnimatePresence>
+          {ballpitEnabled && (
+            <motion.div
+              key="ballpit"
+              className="absolute inset-0 w-full h-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }}
+              exit={{ opacity: 0, transition: { duration: 0.4, ease: "easeOut" } }}
+            >
+              <Ballpit
+                count={135}
+                gravity={0.01}
+                friction={0.9975}
+                wallBounce={0.95}
+                followCursor={false}
+                colors={[0x66D2CE, 0x2DAA9E, 0x1c1c22]}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
+      <BallpitToggle enabled={ballpitEnabled} onToggle={() => setBallpitEnabled((prev) => !prev)} />
       <section className="h-full relative z-10 mt-28 sm:mt-32 xl:mt-28 pt-8 sm:pt-12 xl:pt-16">
         <div className="container mx-auto h-full">
           <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
