@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/oculos-3d.png" type="image/png" />
+        <link rel="icon" href="/assets/favicon-af.png" type="image/png" />
       </head>
       <body className={jetbrainsMono.variable}>
         <Header />
