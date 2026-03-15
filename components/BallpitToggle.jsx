@@ -6,7 +6,7 @@ const BallpitToggle = ({ enabled, onToggle }) => {
   return (
     <motion.button
       onClick={onToggle}
-      className="fixed bottom-6 right-6 z-20 flex items-center gap-2 px-4 py-2.5 rounded-full
+      className="fixed bottom-6 right-6 z-[110] flex items-center gap-2 px-4 py-2.5 rounded-full
         bg-primary/80 backdrop-blur-md border-2 border-accent text-accent
         hover:bg-accent hover:text-primary hover:scale-105
         active:scale-95
