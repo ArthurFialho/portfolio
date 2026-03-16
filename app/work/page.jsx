@@ -86,7 +86,7 @@ const Work = () => {
       <motion.section
         initial={false}
         animate={{ opacity: 1 }}
-        className="flex-1 flex flex-col justify-center py-12 xl:px-0 relative z-10 mt-24"
+        className="flex-1 flex flex-col justify-center py-12 xl:px-0 relative z-10 mt-28 sm:mt-32 xl:mt-36 pt-4 sm:pt-6"
       >
         <div className="container mx-auto px-4">
           <div className="relative h-[400px] sm:h-[500px] xl:h-[600px] min-h-[350px]">
