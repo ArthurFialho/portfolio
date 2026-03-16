@@ -18,7 +18,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaBriefcase, FaGlobe, FaGraduationCap } from "react-icons/fa";
+import RotatingText from "@/components/RotatingText";
 
 const info = [
   {
@@ -35,6 +36,24 @@ const info = [
     icon: <FaMapMarkerAlt />,
     title: "Address",
     description: "Carlos Prates - BH - Brazil",
+  },
+];
+
+const extraInfo = [
+  {
+    icon: <FaBriefcase />,
+    title: "Freelance",
+    description: "Available 🟢",
+  },
+  {
+    icon: <FaGlobe />,
+    title: "Languages",
+    description: "Portuguese, English, German",
+  },
+  {
+    icon: <FaGraduationCap />,
+    title: "Education",
+    description: "Software Engineering at PUC-MG",
   },
 ];
 
@@ -106,7 +125,7 @@ const Contact = () => {
       </div>
       <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-16 relative z-10 mt-24">
         <div className="container mx-auto">
-          <div className="flex flex-col xl:flex-row gap-[30px]">
+          <div className="flex flex-col xl:flex-row xl:items-end gap-[30px]">
             <div className="xl:h-[54%] order-2 xl:order-none">
               <form
                 onSubmit={handleSubmit}
@@ -206,8 +225,24 @@ const Contact = () => {
                 </Button>
               </form>
             </div>
-            <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
-              <ul className="flex flex-col gap-10 bg-[#27272c]/80 backdrop-blur-sm p-10 rounded-xl">
+            <div className="flex-1 flex flex-col items-center xl:items-end xl:justify-end order-1 xl:order-none mb-8 xl:mb-0 gap-4 xl:gap-5">
+              <div className="flex flex-wrap items-center justify-center xl:justify-end gap-1 text-white text-xl sm:text-2xl xl:text-3xl font-semibold">
+                <span className="text-xl">What’s up! I’m Arthur, a creative</span>
+                <RotatingText
+                  texts={['Fullstack', 'Software', 'Engineer']}
+                  mainClassName="px-2 sm:px-2 md:px-3 bg-accent text-primary overflow-hidden py-0.5 sm:py-1 md:py-2 flex items-center justify-center rounded-lg leading-none text-xl"
+                  staggerFrom="last"
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden flex items-center"
+                  elementLevelClassName="leading-none"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={2000}
+                />
+              </div>
+              <ul className="flex flex-col gap-10 bg-[#27272c]/80 backdrop-blur-sm p-10 rounded-xl w-full">
                 {info.map((item, index) => {
                   return (
                     <li key={index} className="flex items-center gap-6">
@@ -217,6 +252,21 @@ const Contact = () => {
                       <div className="flex-1">
                         <p className="text-white/60">{item.title}</p>
                         <h3 className="text-xl">{item.description}</h3>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+              <ul className="flex flex-col gap-4 bg-[#27272c]/80 backdrop-blur-sm p-6 rounded-xl w-full">
+                {extraInfo.map((item, index) => {
+                  return (
+                    <li key={index} className="flex items-center gap-4">
+                      <div className="w-[44px] h-[44px] xl:w-[56px] xl:h-[56px] bg-[#27272c] text-accent rounded-md flex items-center justify-center shrink-0">
+                        <div className="text-xl">{item.icon}</div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white/60 text-sm">{item.title}</p>
+                        <h3 className="text-base xl:text-lg">{item.description}</h3>
                       </div>
                     </li>
                   );
