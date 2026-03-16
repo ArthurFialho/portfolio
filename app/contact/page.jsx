@@ -160,31 +160,33 @@ const Contact = () => {
                     maxLength={15} // opcional para evitar digitação além do esperado
                   />
 
-                  <Select
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, service: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectLabel className="text-accent text-xl">
-                          Select a service
-                        </SelectLabel>
-                        <SelectItem value="web-dev">Web Development</SelectItem>
-                        <SelectItem value="backend-frontend-support">
-                          Back End/Front End Support
-                        </SelectItem>
-                        <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
-                        <SelectItem value="logo-design">Logo Design</SelectItem>
-                        <SelectItem value="hire-me">
-                          Hire me for a position
-                        </SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
+                  <div className="self-start w-full">
+                    <Select
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, service: value })
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel className="text-accent text-xl">
+                            Select a service
+                          </SelectLabel>
+                          <SelectItem value="web-dev">Web Development</SelectItem>
+                          <SelectItem value="backend-frontend-support">
+                            Back End/Front End Support
+                          </SelectItem>
+                          <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
+                          <SelectItem value="logo-design">Logo Design</SelectItem>
+                          <SelectItem value="hire-me">
+                            Hire me for a position
+                          </SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   <Textarea
                     className="h-[200px]"
