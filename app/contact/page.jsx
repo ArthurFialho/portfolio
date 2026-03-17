@@ -117,10 +117,7 @@ const Contact = () => {
           baseColor="#271E37"
           activeColor="#66D2CE"
           proximity={120}
-          shockRadius={250}
-          shockStrength={5}
-          resistance={750}
-          returnDuration={1.5}
+          interactive={false}
         />
       </div>
       <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-16 relative z-10 mt-24">
