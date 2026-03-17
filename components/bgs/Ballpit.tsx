@@ -597,8 +597,12 @@ function processPointerInteraction() {
 
 function onTouchStart(e: TouchEvent) {
   if (e.touches.length > 0) {
-    e.preventDefault();
     pointerPosition.set(e.touches[0].clientX, e.touches[0].clientY);
+    const target = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+    const touchOnBallpit = Array.from(pointerMap.keys()).some(
+      (elem) => elem === target || elem.contains(target)
+    );
+    if (touchOnBallpit) e.preventDefault();
     for (const [elem, data] of pointerMap) {
       const rect = elem.getBoundingClientRect();
       if (isInside(rect)) {
@@ -616,8 +620,12 @@ function onTouchStart(e: TouchEvent) {
 
 function onTouchMove(e: TouchEvent) {
   if (e.touches.length > 0) {
-    e.preventDefault();
     pointerPosition.set(e.touches[0].clientX, e.touches[0].clientY);
+    const target = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+    const touchOnBallpit = Array.from(pointerMap.keys()).some(
+      (elem) => elem === target || elem.contains(target)
+    );
+    if (touchOnBallpit) e.preventDefault();
     for (const [elem, data] of pointerMap) {
       const rect = elem.getBoundingClientRect();
       updatePointerData(data, rect);
