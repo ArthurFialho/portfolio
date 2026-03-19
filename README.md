@@ -49,7 +49,7 @@ Developed with cutting-edge technologies to deliver smooth, high-performance use
 - Performance optimized (95+ Lighthouse score)  
 - Accessible and intuitive navigation
 
-🚀 **Getting Started**
+🚀 **Getting Started with the frontend**
 ```bash
 # Clone the repository
 git clone https://github.com/ArthurFialho/portfolio.git
