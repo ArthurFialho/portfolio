@@ -282,6 +282,146 @@ const skills = {
   ],
 };
 
+/** Experience + problems solved per skill (carousel slides). Keys must match skillList `name`. */
+const SKILL_DETAILS = {
+  "HTML 5": {
+    experience:
+      "I structure pages with semantic HTML—landmarks, headings, and forms that behave correctly for assistive tech. At Geocode and in freelance work I shipped dashboards and marketing pages where clean markup made CSS and JS integration predictable.",
+    problems: [
+      "Refactored legacy templates to semantic sections and labels, fixing inconsistent tab order and improving Lighthouse accessibility scores.",
+      "Normalized form markup across a multi-page flow so validation and error announcements worked the same in every step.",
+    ],
+  },
+  "CSS 3": {
+    experience:
+      "I build responsive layouts with Flexbox/Grid, animations where they help UX, and maintainable class strategies (including Tailwind on newer stacks). I care about how interfaces feel on real devices, not only on a desktop mockup.",
+    problems: [
+      "Eliminated layout shift and overflow bugs on mobile by auditing breakpoints and replacing fixed heights with fluid patterns.",
+      "Implemented complex responsive grids for data-heavy views without breaking alignment between cards and tables.",
+    ],
+  },
+  javascript: {
+    experience:
+      "JavaScript is my day-to-day language for browser and Node: async flows, modules, and debugging production issues. I lean on clear patterns so code stays readable when requirements change.",
+    problems: [
+      "Tracked down race conditions in async data loading and consolidated state handling so UI updates matched server responses.",
+      "Reduced bundle size and improved load time by splitting features and lazy-loading non-critical scripts.",
+    ],
+  },
+  typescript: {
+    experience:
+      "I use TypeScript wherever a codebase grows beyond a few files—shared types between API and UI, safer refactors, and fewer surprises in CI. I balance strictness with pragmatism so delivery does not stall.",
+    problems: [
+      "Introduced shared DTO types across services and front-end, catching contract mismatches before deploy.",
+      "Gradually typed a JS codebase module by module, prioritizing boundaries and public APIs first.",
+    ],
+  },
+  "react.js": {
+    experience:
+      "I compose UIs with React—hooks, context where appropriate, and attention to re-renders and data flow. I have shipped internal tools and customer-facing features in React-heavy codebases.",
+    problems: [
+      "Split oversized components into focused pieces and memoized hot paths to fix interaction lag on large lists.",
+      "Aligned server and client state for forms and wizards so users never saw stale data after mutations.",
+    ],
+  },
+  Docker: {
+    experience:
+      "I containerize services for repeatable builds and smoother handoffs between dev and deploy. Dockerfiles and compose files are part of how I document how an app actually runs.",
+    problems: [
+      "Standardized local environments so new contributors could run the full stack with one command.",
+      "Debugged image size and layer caching issues to speed up CI pipelines without changing application logic.",
+    ],
+  },
+  RabbitMQ: {
+    experience:
+      "I have worked with message queues for decoupling producers and consumers, retries, and back-pressure aware workers. Understanding delivery guarantees mattered when failures had to be visible and recoverable.",
+    problems: [
+      "Tuned consumer concurrency and dead-letter handling so spikes did not silently drop work.",
+      "Documented queue topology and failure modes so on-call could trace a message end-to-end.",
+    ],
+  },
+  Cloudflare: {
+    experience:
+      "I use Cloudflare for DNS, TLS, caching, and edge protections. It is often the first line of defense and the lever for faster global delivery without rewriting the origin app.",
+    problems: [
+      "Configured cache rules and purging so deployments did not serve stale assets to users.",
+      "Reduced origin load during traffic spikes by leaning on CDN caching for static and semi-static content.",
+    ],
+  },
+  AWS: {
+    experience:
+      "I work with core AWS building blocks—storage, compute, IAM, and networking—always with least privilege and cost awareness. I prefer infrastructure that teammates can reason about months later.",
+    problems: [
+      "Tightened IAM policies and rotated credentials as part of hardening a service exposed to the internet.",
+      "Chose storage and lifecycle rules so log and media costs stayed predictable as usage grew.",
+    ],
+  },
+  Golang: {
+    experience:
+      "I use Go for efficient services and CLIs—simple deployment, strong concurrency primitives, and static binaries. It fits well for APIs and workers that must stay stable under load.",
+    problems: [
+      "Implemented concurrent workers with clear shutdown semantics to avoid goroutine leaks during deploys.",
+      "Profiled hot paths and reduced allocations in a handler that was CPU-bound at peak traffic.",
+    ],
+  },
+  "C#(.NET)": {
+    experience:
+      "I have built and maintained .NET APIs and integrations—dependency injection, configuration, and structured logging. Enterprise expectations around errors and observability shaped how I designed endpoints.",
+    problems: [
+      "Stabilized flaky integration tests by isolating external dependencies and fixing async test deadlocks.",
+      "Improved error responses and correlation IDs so support could trace issues from client to server logs.",
+    ],
+  },
+  php: {
+    experience:
+      "PHP still powers a lot of the web; I have maintained and extended PHP codebases, focused on security (SQL injection, XSS), and clear layering when business rules grew.",
+    problems: [
+      "Wrapped legacy queries with prepared statements and input validation to close known vulnerability classes.",
+      "Extracted duplicated view logic into reusable partials to speed up feature work and reduce bugs.",
+    ],
+  },
+  "next.js": {
+    experience:
+      "Next.js is my go-to for React apps with routing, SSR/SSG choices, and API routes when appropriate. I care about Core Web Vitals and how framework choices affect SEO and perceived speed.",
+    problems: [
+      "Chose rendering strategies per route so marketing pages stayed static while dashboards stayed dynamic.",
+      "Fixed hydration mismatches caused by client-only data and timezone formatting.",
+    ],
+  },
+  "tailwind.css": {
+    experience:
+      "Tailwind keeps styling consistent and fast to iterate—design tokens via config, responsive utilities, and fewer one-off CSS files. I pair it with component discipline so class lists do not become unreadable.",
+    problems: [
+      "Established shared spacing and typography scales so new screens matched the rest of the product.",
+      "Refactored repeated utility chains into small components without losing Tailwind’s flexibility.",
+    ],
+  },
+  "node.js": {
+    experience:
+      "Node backs many of my APIs and scripts—Express-style stacks, middleware, validation, and integration with databases and queues. I watch for memory usage, event-loop health, and proper error propagation.",
+    problems: [
+      "Added structured logging and request IDs across services to debug intermittent 500s in production.",
+      "Fixed memory growth by closing connections and clearing timers in long-lived worker processes.",
+    ],
+  },
+  PostgreSQl: {
+    experience:
+      "PostgreSQL is my default relational database—schema design, indexes, transactions, and migrations. I write queries with explain plans in mind and avoid N+1 access patterns at the source.",
+    problems: [
+      "Added missing indexes and rewrote queries that scanned large tables on every request.",
+      "Designed migrations with zero-downtime steps for high-traffic tables (add column, backfill, switch reads).",
+    ],
+  },
+  MySQL: {
+    experience:
+      "I have worked with MySQL for LAMP-style stacks and hosted services—replication basics, charset issues, and pragmatic indexing. When the data model fights the queries, I fix the model or the access pattern.",
+    problems: [
+      "Resolved deadlock-prone update ordering by batching writes and aligning transaction boundaries.",
+      "Migrated a fragile hand-written SQL area to parameterized queries and clearer repository methods.",
+    ],
+  },
+};
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
@@ -295,8 +435,58 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
 import GridMotion from "@/components/bgs/GridMotion";
 import Footer from "@/components/Footer";
+import Carousel from "@/components/Carousel";
+import * as Dialog from "@radix-ui/react-dialog";
+import { IoMdClose } from "react-icons/io";
+import { FiBriefcase, FiTarget } from "react-icons/fi";
+import { useState, useEffect, useMemo } from "react";
+import { cn } from "@/lib/utils";
+
+function buildSkillCarouselItems(skillName, detail) {
+  const fallback = {
+    id: `${skillName}-fallback`,
+    title: skillName,
+    description:
+      "I use this skill in production and freelance work. More specific write-ups are coming soon—feel free to ask in a message.",
+    icon: <FiBriefcase className="h-[16px] w-[16px] text-white" />,
+  };
+  if (!detail) return [fallback];
+  return [
+    {
+      id: `${skillName}-exp`,
+      title: "Experience",
+      description: detail.experience,
+      icon: <FiBriefcase className="h-[16px] w-[16px] text-white" />,
+    },
+    {
+      id: `${skillName}-prob`,
+      title: "Problems I solved",
+      description: detail.problems.map((p) => `• ${p}`).join("\n\n"),
+      icon: <FiTarget className="h-[16px] w-[16px] text-white" />,
+    },
+  ];
+}
 
 const Resume = () => {
+  const [skillModalOpen, setSkillModalOpen] = useState(false);
+  const [activeSkillName, setActiveSkillName] = useState(null);
+  const [carouselBase, setCarouselBase] = useState(300);
+
+  const activeDetail = activeSkillName ? SKILL_DETAILS[activeSkillName] : null;
+  const carouselItems = useMemo(() => {
+    if (!activeSkillName) return [];
+    return buildSkillCarouselItems(activeSkillName, activeDetail);
+  }, [activeSkillName, activeDetail]);
+
+  useEffect(() => {
+    const update = () => {
+      setCarouselBase(Math.min(300, Math.max(260, window.innerWidth - 48)));
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
     <>
       <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', zIndex: 1, opacity: 0.3, backgroundColor: '#1c1c22' }}>
@@ -446,13 +636,24 @@ const Resume = () => {
                           <li key={index}>
                             <TooltipProvider delayDuration={100}>
                               <Tooltip>
-                                <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                                  <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                                    {skill.icon}
-                                  </div>
+                                <TooltipTrigger asChild>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setActiveSkillName(skill.name);
+                                      setSkillModalOpen(true);
+                                    }}
+                                    className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group cursor-pointer border border-transparent outline-none transition-colors hover:border-accent/30 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                                  >
+                                    <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                      {skill.icon}
+                                    </div>
+                                  </button>
                                 </TooltipTrigger>
                                 <TooltipContent>
-                                  <p className="capitalize">{skill.name}</p>
+                                  <p className="capitalize">
+                                    {skill.name} — click for details
+                                  </p>
                                 </TooltipContent>
                               </Tooltip>
                             </TooltipProvider>
@@ -492,6 +693,71 @@ const Resume = () => {
           </Tabs>
         </div>
       </motion.div>
+
+      <Dialog.Root
+        open={skillModalOpen}
+        onOpenChange={(open) => {
+          setSkillModalOpen(open);
+          if (!open) setActiveSkillName(null);
+        }}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-[200] bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+          <Dialog.Content
+            className={cn(
+              "fixed left-1/2 top-1/2 z-[201] max-h-[min(92vh,880px)] w-[min(100vw-1.5rem,440px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto",
+              "rounded-xl border border-[#232329] bg-primary p-5 shadow-xl outline-none",
+              "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+              "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200"
+            )}
+          >
+            <Dialog.Title className="sr-only">
+              {activeSkillName ? `Skill: ${activeSkillName}` : "Skill details"}
+            </Dialog.Title>
+            <Dialog.Description className="sr-only">
+              Experience and problems solved with this technology.
+            </Dialog.Description>
+            <Dialog.Close
+              type="button"
+              className="absolute right-4 top-4 z-10 rounded-md p-1 outline-none transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-accent"
+              aria-label="Close"
+            >
+              <IoMdClose className="text-3xl text-accent" />
+            </Dialog.Close>
+            {activeSkillName && carouselItems.length > 0 && (
+              <div className="flex flex-col">
+                <div
+                  className="flex w-full items-center justify-center"
+                  style={{
+                    height: "min(600px, calc(100vh - 11rem))",
+                    position: "relative",
+                  }}
+                >
+                  <Carousel
+                    key={activeSkillName}
+                    items={carouselItems}
+                    baseWidth={carouselBase}
+                    autoplay={false}
+                    autoplayDelay={3000}
+                    pauseOnHover={false}
+                    loop={false}
+                    round={false}
+                  />
+                </div>
+                <div className="mt-6 border-t border-[#232329] pt-6 text-center">
+                  <h3 className="text-4xl font-bold capitalize text-white">
+                    {activeSkillName}
+                  </h3>
+                  <p className="mt-2 text-sm text-accent">
+                    Experience & problems
+                  </p>
+                </div>
+              </div>
+            )}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+
       <div className="relative z-[100]">
         <Footer />
       </div>
