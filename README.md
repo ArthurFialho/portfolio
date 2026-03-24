@@ -1,7 +1,6 @@
 
 <div align="center">
   <h1>Arthur Fialho Portfolio <img width="38" height="38" alt="image" src="https://github.com/user-attachments/assets/932c984a-e828-457f-bdaf-b84f04262221"/></h1>
-  <p><i>Where code meets creativity</i></p>
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
@@ -49,7 +48,7 @@ Developed with cutting-edge technologies to deliver smooth, high-performance use
 - Performance optimized (95+ Lighthouse score)  
 - Accessible and intuitive navigation
 
-🚀 **Getting Started**
+🚀 **Getting Started with the frontend**
 ```bash
 # Clone the repository
 git clone https://github.com/ArthurFialho/portfolio.git
