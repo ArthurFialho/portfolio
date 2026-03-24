@@ -40,7 +40,8 @@ const DEFAULT_ITEMS = [
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
-const SPRING_OPTIONS = { type: 'spring', stiffness: 300, damping: 30 };
+/** Softer spring so slides settle more slowly */
+const SPRING_OPTIONS = { type: 'spring', stiffness: 195, damping: 22, mass: 0.85 };
 
 function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, transition }) {
   const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
@@ -75,7 +76,7 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
   return (
     <motion.div
       className={cn(
-        'group relative flex h-full min-h-[280px] shrink-0 flex-col overflow-hidden rounded-[12px] border border-[#2a2a32] bg-[#1e1e24]',
+        'group relative flex h-full min-h-[230px] shrink-0 flex-col overflow-hidden rounded-[12px] border border-[#2a2a32] bg-[#1e1e24]',
         'cursor-grab active:cursor-grabbing',
         'transition-all duration-300 ease-out',
         'hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_16px_48px_-16px_rgba(102,210,206,0.18)]'
@@ -98,7 +99,7 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
         </span>
       </div>
 
-      <div className="mt-auto flex min-h-0 flex-col px-5 pb-6 pt-8">
+      <div className="mt-auto flex min-h-0 flex-col px-5 pb-5 pt-6">
         <div className="mb-2 font-black text-lg leading-tight text-accent">{item.title}</div>
         <p className="whitespace-pre-line text-sm leading-relaxed text-white/88">{item.description}</p>
       </div>
@@ -255,7 +256,7 @@ export default function Carousel({
       }}
     >
       <motion.div
-        className="flex h-full min-h-[300px] items-stretch"
+        className="flex h-full min-h-[250px] items-stretch"
         drag={isAnimating ? false : 'x'}
         {...dragProps}
         style={{

@@ -702,13 +702,13 @@ const Resume = () => {
         }}
       >
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-[200] bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+          <Dialog.Overlay className="fixed inset-0 z-[200] bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:duration-500 data-[state=closed]:duration-400" />
           <Dialog.Content
             className={cn(
               "fixed left-1/2 top-1/2 z-[201] max-h-[min(92vh,880px)] w-[min(100vw-1.5rem,440px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto",
               "rounded-xl border border-[#232329] bg-primary p-5 shadow-xl outline-none",
               "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-              "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200"
+              "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=open]:duration-500 data-[state=closed]:duration-400 ease-out"
             )}
           >
             <Dialog.Title className="sr-only">
@@ -726,10 +726,18 @@ const Resume = () => {
             </Dialog.Close>
             {activeSkillName && carouselItems.length > 0 && (
               <div className="flex flex-col">
+                <div className="border-b border-[#232329] pb-6 text-center">
+                  <h3 className="pr-8 text-4xl font-bold capitalize text-white">
+                    {activeSkillName}
+                  </h3>
+                  <p className="mt-2 text-sm text-accent">
+                    Experience & problems
+                  </p>
+                </div>
                 <div
-                  className="flex w-full items-center justify-center"
+                  className="mt-6 flex w-full items-center justify-center"
                   style={{
-                    height: "min(600px, calc(100vh - 11rem))",
+                    height: "min(520px, calc(100vh - 11rem))",
                     position: "relative",
                   }}
                 >
@@ -743,14 +751,6 @@ const Resume = () => {
                     loop={false}
                     round={false}
                   />
-                </div>
-                <div className="mt-6 border-t border-[#232329] pt-6 text-center">
-                  <h3 className="text-4xl font-bold capitalize text-white">
-                    {activeSkillName}
-                  </h3>
-                  <p className="mt-2 text-sm text-accent">
-                    Experience & problems
-                  </p>
                 </div>
               </div>
             )}
