@@ -23,7 +23,7 @@ uniform vec2 uMouse;
 
 #define PI 3.1415926538
 
-const int u_line_count = 40;
+const int u_line_count = 26;
 const float u_line_width = 7.0;
 const float u_line_blur = 10.0;
 
@@ -118,6 +118,21 @@ void main() {
 }
 `;
 
+/** Cap fragment workload (~1M px) while stretching the canvas with CSS. */
+const MAX_SHADER_AREA = 1_000_000;
+
+function bufferDimensions(clientWidth, clientHeight) {
+  const area = clientWidth * clientHeight;
+  if (area <= MAX_SHADER_AREA) {
+    return { bufW: clientWidth, bufH: clientHeight };
+  }
+  const scale = Math.sqrt(MAX_SHADER_AREA / area);
+  return {
+    bufW: Math.max(1, Math.floor(clientWidth * scale)),
+    bufH: Math.max(1, Math.floor(clientHeight * scale)),
+  };
+}
+
 const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseInteraction = false, ...rest }) => {
   const containerRef = useRef(null);
   const animationFrameId = useRef();
@@ -126,7 +141,9 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
     if (!containerRef.current) return;
     const container = containerRef.current;
 
-    const renderer = new Renderer({ alpha: true });
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const renderer = new Renderer({ alpha: true, dpr: 1 });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
@@ -153,10 +170,13 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
 
     function resize() {
       const { clientWidth, clientHeight } = container;
-      renderer.setSize(clientWidth, clientHeight);
-      program.uniforms.iResolution.value.r = clientWidth;
-      program.uniforms.iResolution.value.g = clientHeight;
-      program.uniforms.iResolution.value.b = clientWidth / clientHeight;
+      const { bufW, bufH } = bufferDimensions(clientWidth, clientHeight);
+      renderer.setSize(bufW, bufH);
+      gl.canvas.style.width = '100%';
+      gl.canvas.style.height = '100%';
+      program.uniforms.iResolution.value.r = bufW;
+      program.uniforms.iResolution.value.g = bufH;
+      program.uniforms.iResolution.value.b = bufW / bufH;
     }
     window.addEventListener('resize', resize);
     resize();
@@ -174,11 +194,19 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
       targetMouse = [0.5, 0.5];
     }
     if (enableMouseInteraction) {
-      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('mousemove', handleMouseMove, { passive: true });
       container.addEventListener('mouseleave', handleMouseLeave);
     }
 
+    let frameIndex = 0;
+
     function update(t) {
+      animationFrameId.current = requestAnimationFrame(update);
+
+      if (document.hidden) return;
+
+      if (prefersReducedMotion && (frameIndex++ & 1)) return;
+
       if (enableMouseInteraction) {
         const smoothing = 0.05;
         currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
@@ -192,7 +220,6 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
       program.uniforms.iTime.value = t * 0.001;
 
       renderer.render({ scene: mesh });
-      animationFrameId.current = requestAnimationFrame(update);
     }
     animationFrameId.current = requestAnimationFrame(update);
 

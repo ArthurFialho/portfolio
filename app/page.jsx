@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -9,9 +10,10 @@ import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
-import Ballpit from "@/components/bgs/Ballpit";
 import BallpitToggle from "@/components/BallpitToggle";
 import Threads from "@/components/bgs/Threads";
+
+const Ballpit = dynamic(() => import("@/components/bgs/Ballpit"), { ssr: false });
 
 const ACCENT_THREADS_RGB = [102 / 255, 210 / 255, 206 / 255];
 
