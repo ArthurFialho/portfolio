@@ -11,15 +11,18 @@ import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
 import Ballpit from "@/components/bgs/Ballpit";
 import BallpitToggle from "@/components/BallpitToggle";
+import Threads from "@/components/bgs/Threads";
+
+const ACCENT_THREADS_RGB = [102 / 255, 210 / 255, 206 / 255];
 
 const Home = () => {
-  const [ballpitEnabled, setBallpitEnabled] = useState(true);
+  const [ballpitEnabled, setBallpitEnabled] = useState(false);
 
   return (
     <>
       <div style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", zIndex: 1, backgroundColor: "#1c1c22" }}>
-        <AnimatePresence>
-          {ballpitEnabled && (
+        <AnimatePresence mode="wait">
+          {ballpitEnabled ? (
             <motion.div
               key="ballpit"
               className="absolute inset-0 w-full h-full"
@@ -33,7 +36,22 @@ const Home = () => {
                 friction={0.9975}
                 wallBounce={0.95}
                 followCursor={false}
-                colors={[0x66D2CE, 0x2DAA9E, 0x1c1c22]}
+                colors={[0x66d2ce, 0x2daa9e, 0x1c1c22]}
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="threads"
+              className="absolute inset-0 w-full h-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }}
+              exit={{ opacity: 0, transition: { duration: 0.35, ease: "easeOut" } }}
+            >
+              <Threads
+                amplitude={1}
+                distance={0}
+                enableMouseInteraction
+                color={ACCENT_THREADS_RGB}
               />
             </motion.div>
           )}

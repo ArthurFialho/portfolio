@@ -17,16 +17,25 @@ const BallpitToggle = ({ enabled, onToggle }) => {
       transition={{ delay: 1.5, duration: 0.4, ease: "easeOut" }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      aria-label={enabled ? "Desativar bolas" : "Ativar bolas"}
+      aria-label={enabled ? "Voltar para threads" : "Ativar bolhas de fundo"}
     >
-      <motion.span
-        animate={{
-          rotate: enabled ? 0 : 180,
-          scale: enabled ? 1 : 0.8,
-        }}
-        transition={{ duration: 0.3 }}
-      >
+      <span className="inline-flex">
         {enabled ? (
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 14c2.5-2 5.5-2 8 0s5.5 2 8 0M4 10c2.5-2 5.5-2 8 0s5.5 2 8 0M4 18c2.5-2 5.5-2 8 0s5.5 2 8 0"
+            />
+          </svg>
+        ) : (
           <svg
             className="w-5 h-5"
             fill="none"
@@ -38,31 +47,10 @@ const BallpitToggle = ({ enabled, onToggle }) => {
             <circle cx="18" cy="8" r="2.5" strokeWidth="2" />
             <circle cx="12" cy="16" r="2.5" strokeWidth="2" />
           </svg>
-        ) : (
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
         )}
-      </motion.span>
+      </span>
       <span className="text-sm font-medium uppercase tracking-wider hidden sm:inline">
-        {enabled ? "Bubbles" : "Activate"}
+        {enabled ? "Threads" : "Bubbles"}
       </span>
     </motion.button>
   );
