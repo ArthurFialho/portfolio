@@ -36,6 +36,8 @@ export interface DotGridProps {
   maxSpeed?: number;
   resistance?: number;
   returnDuration?: number;
+  /** When false, no pointer listeners and a single static paint (no animation loop). */
+  interactive?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -62,15 +64,17 @@ const DotGrid: React.FC<DotGridProps> = ({
   maxSpeed = 5000,
   resistance = 750,
   returnDuration = 1.5,
+  interactive = true,
   className = '',
   style
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
+  const drawFrameRef = useRef<() => void>(() => {});
   const pointerRef = useRef({
-    x: 0,
-    y: 0,
+    x: -1e6,
+    y: -1e6,
     vx: 0,
     vy: 0,
     speed: 0,
@@ -102,8 +106,6 @@ const DotGrid: React.FC<DotGridProps> = ({
     canvas.height = height * dpr;
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
-    const ctx = canvas.getContext('2d');
-    if (ctx) ctx.scale(dpr, dpr);
 
     const cols = Math.floor((width + gap) / (dotSize + gap));
     const rows = Math.floor((height + gap) / (dotSize + gap));
@@ -127,31 +129,29 @@ const DotGrid: React.FC<DotGridProps> = ({
       }
     }
     dotsRef.current = dots;
+    requestAnimationFrame(() => drawFrameRef.current());
   }, [dotSize, gap]);
 
-  useEffect(() => {
-    if (!circlePath) return;
+  const drawFrame = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !circlePath) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
 
-    let rafId: number;
     const proxSq = proximity * proximity;
+    const { x: px, y: py } = pointerRef.current;
 
-    const draw = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const { x: px, y: py } = pointerRef.current;
-
-      for (const dot of dotsRef.current) {
-        const ox = dot.cx + dot.xOffset;
-        const oy = dot.cy + dot.yOffset;
+    for (const dot of dotsRef.current) {
+      const ox = dot.cx + dot.xOffset;
+      const oy = dot.cy + dot.yOffset;
+      let style = baseColor;
+      if (interactive) {
         const dx = dot.cx - px;
         const dy = dot.cy - py;
         const dsq = dx * dx + dy * dy;
-
-        let style = baseColor;
         if (dsq <= proxSq) {
           const dist = Math.sqrt(dsq);
           const t = 1 - dist / proximity;
@@ -160,20 +160,45 @@ const DotGrid: React.FC<DotGridProps> = ({
           const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
           style = `rgb(${r},${g},${b})`;
         }
-
-        ctx.save();
-        ctx.translate(ox, oy);
-        ctx.fillStyle = style;
-        ctx.fill(circlePath);
-        ctx.restore();
       }
 
-      rafId = requestAnimationFrame(draw);
-    };
+      ctx.save();
+      ctx.translate(ox, oy);
+      ctx.fillStyle = style;
+      ctx.fill(circlePath);
+      ctx.restore();
+    }
+  }, [
+    circlePath,
+    proximity,
+    baseColor,
+    interactive,
+    activeRgb.r,
+    activeRgb.g,
+    activeRgb.b,
+    baseRgb.r,
+    baseRgb.g,
+    baseRgb.b
+  ]);
 
-    draw();
+  drawFrameRef.current = drawFrame;
+
+  useEffect(() => {
+    if (!circlePath || !interactive) return;
+
+    let rafId: number;
+    const loop = () => {
+      drawFrame();
+      rafId = requestAnimationFrame(loop);
+    };
+    loop();
     return () => cancelAnimationFrame(rafId);
-  }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
+  }, [circlePath, interactive, drawFrame]);
+
+  useEffect(() => {
+    if (interactive || !circlePath) return;
+    drawFrame();
+  }, [interactive, circlePath, drawFrame]);
 
   useEffect(() => {
     buildGrid();
@@ -191,6 +216,8 @@ const DotGrid: React.FC<DotGridProps> = ({
   }, [buildGrid]);
 
   useEffect(() => {
+    if (!interactive) return;
+
     const onMove = (e: MouseEvent) => {
       const now = performance.now();
       const pr = pointerRef.current;
@@ -276,7 +303,16 @@ const DotGrid: React.FC<DotGridProps> = ({
       window.removeEventListener('mousemove', throttledMove);
       window.removeEventListener('click', onClick);
     };
-  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+  }, [
+    interactive,
+    maxSpeed,
+    speedTrigger,
+    proximity,
+    resistance,
+    returnDuration,
+    shockRadius,
+    shockStrength
+  ]);
 
   return (
     <section className={`p-4 flex items-center justify-center h-full w-full relative ${className}`} style={style}>

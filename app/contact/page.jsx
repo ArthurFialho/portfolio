@@ -110,14 +110,18 @@ const Contact = () => {
   });
   return (
     <>
-      <div style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", zIndex: 1, backgroundColor: "#1c1c22" }}>
+      <div
+        className="pointer-events-none"
+        style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", zIndex: 1, backgroundColor: "#1c1c22" }}
+      >
         <DotGrid
           dotSize={5}
           gap={15}
           baseColor="#271E37"
           activeColor="#66D2CE"
           proximity={120}
-          interactive={false}
+          interactive
+          className="!p-0 min-h-0"
         />
       </div>
       <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-16 relative z-10 mt-24">
