@@ -12,6 +12,7 @@ import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
 import BallpitToggle from "@/components/BallpitToggle";
 import Threads from "@/components/bgs/Threads";
+import SplashCursor from "@/components/SplashCursor";
 
 const Ballpit = dynamic(() => import("@/components/bgs/Ballpit"), { ssr: false });
 
@@ -22,6 +23,18 @@ const Home = () => {
 
   return (
     <>
+      {!ballpitEnabled && (
+        <SplashCursor
+          RAINBOW_MODE={false}
+          COLOR="#66D2CE"
+          DYE_RESOLUTION={512}
+          SIM_RESOLUTION={64}
+          SHADING={false}
+          PRESSURE_ITERATIONS={10}
+          DENSITY_DISSIPATION={4}
+          VELOCITY_DISSIPATION={3}
+        />
+      )}
       <div style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", zIndex: 1, backgroundColor: "#1c1c22" }}>
         <AnimatePresence mode="wait">
           {ballpitEnabled ? (
