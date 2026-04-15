@@ -89,7 +89,7 @@ const Home = () => {
                 Currently building things that work, from both ends of the stack.
               </p>
               {/* {btn and socials} */}
-              <div className="flex flex-col xl:flex-row items-center gap-8">
+              <div className="relative z-[60] flex flex-col xl:flex-row items-center gap-8 bg-primary/60 rounded-2xl px-6 py-4 backdrop-blur-[2px]">
                 <a
                   href="/assets/Currículo _ Arthur Fialho - Dev. Full Stack (2).pdf"
                   download="Curriculo_Arthur_Fialho_Dev_Full_Stack.pdf"
