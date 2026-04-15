@@ -31,7 +31,7 @@ const Home = () => {
           SIM_RESOLUTION={64}
           SHADING={false}
           PRESSURE_ITERATIONS={10}
-          DENSITY_DISSIPATION={4}
+          DENSITY_DISSIPATION={2}
           VELOCITY_DISSIPATION={3}
         />
       )}
