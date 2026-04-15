@@ -97,12 +97,15 @@ const Home = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="uppercase flex items-center gap-2 border border-accent text-accent hover:bg-accent hover:text-white hover:border-white transition-all duration-500"
+                    className="group uppercase flex items-center gap-2 border border-accent text-accent 
+                    hover:bg-accent hover:text-white 
+                    hover:scale-105 
+                    hover:shadow-[0_0_20px_rgba(0,255,200,0.5)] 
+                    transition-all duration-300"
                     aria-label="Download my CV"
                   >
                     <span>Download CV</span>
-                    <FiDownload className="text-xl" />
-                  </Button>
+                    <FiDownload className="text-xl transition-transform duration-300 group-hover:translate-y-1" />                  </Button>
                 </a>
 
                 <div className="mb-8 xl:mb-0">
