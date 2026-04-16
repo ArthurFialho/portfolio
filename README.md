@@ -10,7 +10,7 @@
 </div>
 
 🎯 **About This Project**  
-This is my modern and responsive portfolio, built to showcase my skills in frontend development, software architecture, and UI/UX design.  
+I'm Arthur Fialho, a full stack software engineer and this is my modern and responsive portfolio. Built to showcase my skills in full stack development, software architecture, database management and UI/UX design.  
 Developed with cutting-edge technologies to deliver smooth, high-performance user experiences.
 
 <div align="center">
