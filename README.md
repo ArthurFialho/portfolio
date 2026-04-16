@@ -60,6 +60,14 @@ npm install
 npm run dev
 ```
 
+
+🌐 **Live Preview**  
+<div align="center">
+  <a href="https://portfolioarthurfialho.vercel.app" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/4661/4661322.png" alt="Live Preview" width="48px" />
+  </a>
+</div>
+
 📊 **Performance Metrics**
 <div align="center">
   <table>
@@ -70,13 +78,6 @@ npm run dev
       <td align="center"><strong>🎨 CLS</strong><br>< 0.1</td>
     </tr>
   </table>
-</div>
-
-🌐 **Live Preview**  
-<div align="center">
-  <a href="https://portfolioarthurfialho.vercel.app" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/4661/4661322.png" alt="Live Preview" width="48px" />
-  </a>
 </div>
 
 🤝 **Let's Connect**
