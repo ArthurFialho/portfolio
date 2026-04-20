@@ -10,7 +10,7 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   const pathname = usePathname();
-  const isTransparent = pathname === "/" || pathname === "/showroom" || pathname === "/work" || pathname === "/resume" || pathname === "/services" || pathname === "/contact";
+  const isTransparent = pathname === "/" || pathname === "/showroom" || pathname === "/work" || pathname === "/resume" || pathname === "/services" || pathname === "/contact" || pathname === "/hire";
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Header = () => {
         </Link>
         <div className="hidden xl:flex items-center gap-8">
           <Nav />
-          <Link href="/contact">
+          <Link href="/hire">
             <Button className="border border-accent text-primary hover:bg-accent hover:text-white hover:border-white transition-all duration-500">
               Hire me
             </Button>
