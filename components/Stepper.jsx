@@ -1,4 +1,4 @@
-import React, { useState, Children, useRef, useLayoutEffect } from 'react';
+import React, { useState, Children } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Stepper({
@@ -129,43 +129,28 @@ export default function Stepper({
 }
 
 function StepContentWrapper({ isCompleted, currentStep, direction, children, className }) {
-  const [parentHeight, setParentHeight] = useState(0);
-
   return (
-    <motion.div
-      style={{ position: 'relative', overflow: 'hidden' }}
-      animate={{ height: isCompleted ? 0 : parentHeight }}
-      transition={{ type: 'spring', duration: 0.4 }}
-      className={className}
-    >
-      <AnimatePresence initial={false} mode="sync" custom={direction}>
+    <div style={{ overflow: 'hidden' }} className={className}>
+      <AnimatePresence initial={false} mode="wait" custom={direction}>
         {!isCompleted && (
-          <SlideTransition key={currentStep} direction={direction} onHeightReady={h => setParentHeight(h)}>
+          <SlideTransition key={currentStep} direction={direction}>
             {children}
           </SlideTransition>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
-function SlideTransition({ children, direction, onHeightReady }) {
-  const containerRef = useRef(null);
-
-  useLayoutEffect(() => {
-    if (containerRef.current) onHeightReady(containerRef.current.offsetHeight);
-  }, [children, onHeightReady]);
-
+function SlideTransition({ children, direction }) {
   return (
     <motion.div
-      ref={containerRef}
       custom={direction}
       variants={stepVariants}
       initial="enter"
       animate="center"
       exit="exit"
-      transition={{ duration: 0.4 }}
-      style={{ position: 'absolute', left: 0, right: 0, top: 0 }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
     >
       {children}
     </motion.div>
@@ -174,7 +159,7 @@ function SlideTransition({ children, direction, onHeightReady }) {
 
 const stepVariants = {
   enter: dir => ({
-    x: dir >= 0 ? '-100%' : '100%',
+    x: dir >= 0 ? '100%' : '-100%',
     opacity: 0
   }),
   center: {
@@ -182,7 +167,7 @@ const stepVariants = {
     opacity: 1
   },
   exit: dir => ({
-    x: dir >= 0 ? '50%' : '-50%',
+    x: dir >= 0 ? '-50%' : '50%',
     opacity: 0
   })
 };

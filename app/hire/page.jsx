@@ -206,7 +206,7 @@ const HirePage = () => {
         />
       </div>
 
-      <div className="relative z-10 mt-28 [overflow-x:clip]">
+      <div className="relative z-10 mt-20 [overflow-x:clip]">
 
         {/* Hero */}
         <section className="py-12 xl:py-16">
@@ -422,51 +422,51 @@ const HirePage = () => {
               viewport={{ once: true, margin: "0px 0px -60px 0px" }}
               transition={{ duration: 0.5 }}
             >
-            <BorderGlow
-              edgeSensitivity={20}
-              glowColor="178 54 62"
-              backgroundColor="#27272c"
-              borderRadius={28}
-              glowRadius={50}
-              glowIntensity={1.2}
-              coneSpread={30}
-              animated={false}
-              colors={['#66D2CE', '#2DAA9E', '#026070', '#8cbeb3']}
-              className="max-w-3xl mx-auto"
-            >
-            <div
-              className="text-center p-8 sm:p-12 xl:p-16 space-y-5"
-              style={{ position: "relative", overflow: "hidden" }}
-            >
-              <div style={{ height: "500px", position: "absolute", inset: 0 }}>
-                <PixelTrail
-                  gridSize={50}
-                  trailSize={0.1}
-                  maxAge={250}
-                  interpolate={5}
-                  color="#66D2CE"
-                  gooeyFilter={{ id: "custom-goo-filter", strength: 2 }}
-                  gooeyEnabled
-                  gooStrength={2}
-                />
-              </div>
-              <div style={{ position: "relative", zIndex: 10, pointerEvents: "none" }}>
-                <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Ready to start?</h2>
-                <p className="text-white/60 text-sm sm:text-base max-w-lg mx-auto mt-5">
-                  Send me a message and we&apos;ll set up a quick call.<br />
-                  No commitment just a
-                  conversation about what you need and how i can solve your problem.
-                </p>
-                <div style={{ pointerEvents: "auto" }}>
-                  <Link href="/contact">
-                    <Button className="border mt-5 border-accent text-primary hover:bg-accent hover:text-white hover:border-white transition-all duration-500 uppercase px-8 py-6 text-base">
-                      Get in touch →
-                    </Button>
-                  </Link>
+              <BorderGlow
+                edgeSensitivity={20}
+                glowColor="178 54 62"
+                backgroundColor="#27272c"
+                borderRadius={28}
+                glowRadius={50}
+                glowIntensity={1.2}
+                coneSpread={30}
+                animated={false}
+                colors={['#66D2CE', '#2DAA9E', '#026070', '#8cbeb3']}
+                className="max-w-3xl mx-auto"
+              >
+                <div
+                  className="text-center p-8 sm:p-12 xl:p-16 space-y-5"
+                  style={{ position: "relative", overflow: "hidden" }}
+                >
+                  <div style={{ height: "500px", position: "absolute", inset: 0 }}>
+                    <PixelTrail
+                      gridSize={50}
+                      trailSize={0.1}
+                      maxAge={250}
+                      interpolate={5}
+                      color="#66D2CE"
+                      gooeyFilter={{ id: "custom-goo-filter", strength: 2 }}
+                      gooeyEnabled
+                      gooStrength={2}
+                    />
+                  </div>
+                  <div style={{ position: "relative", zIndex: 10, pointerEvents: "none" }}>
+                    <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Ready to start?</h2>
+                    <p className="text-white/60 text-sm sm:text-base max-w-lg mx-auto mt-5">
+                      Send me a message and we&apos;ll set up a quick call.<br />
+                      No commitment just a
+                      conversation about what you need and how i can solve your problem.
+                    </p>
+                    <div style={{ pointerEvents: "auto" }}>
+                      <Link href="/contact">
+                        <Button className="border mt-5 border-accent text-primary hover:bg-accent hover:text-white hover:border-white transition-all duration-500 uppercase px-8 py-6 text-base">
+                          Get in touch →
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            </BorderGlow>
+              </BorderGlow>
             </motion.div>
           </div>
         </section>
