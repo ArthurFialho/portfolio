@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import DotGrid from "@/components/bgs/DotGrid";
 import Footer from "@/components/Footer";
 
@@ -59,6 +59,18 @@ const extraInfo = [
 ];
 
 const Contact = () => {
+  const formAnim  = useAnimation();
+  const textAnim  = useAnimation();
+  const infoAnim  = useAnimation();
+  const extraAnim = useAnimation();
+
+  useEffect(() => {
+    formAnim.start({ opacity: 1, transition: { delay: 1.6,  duration: 0.4, ease: "easeOut" } });
+    textAnim.start({ opacity: 1, transition: { delay: 1.85, duration: 0.4, ease: "easeOut" } });
+    infoAnim.start({ opacity: 1, transition: { delay: 2.05, duration: 0.4, ease: "easeOut" } });
+    extraAnim.start({ opacity: 1, transition: { delay: 2.25, duration: 0.4, ease: "easeOut" } });
+  }, []);
+
   function formatTelefone(value) {
     let tel = value;
 
@@ -129,8 +141,8 @@ const Contact = () => {
         <div className="container mx-auto">
           <div className="flex flex-col xl:flex-row xl:items-end gap-[30px]">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0, transition: { delay: 1.6, duration: 0.4, ease: "easeOut" } }}
+              initial={{ opacity: 0 }}
+              animate={formAnim}
               className="xl:h-[54%] order-2 xl:order-none"
             >
               <form
@@ -233,8 +245,8 @@ const Contact = () => {
             </motion.div>
             <div className="flex-1 flex flex-col items-center xl:items-end xl:justify-end order-1 xl:order-none mb-8 xl:mb-0 gap-4 xl:gap-5">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 1.85, duration: 0.4, ease: "easeOut" } }}
+                initial={{ opacity: 0 }}
+                animate={textAnim}
                 className="flex flex-wrap items-center justify-center xl:justify-end gap-1 text-white text-xl sm:text-2xl xl:text-3xl font-semibold"
               >
                 <span className="text-xl">What’s up! I’m Arthur, a creative</span>
@@ -253,8 +265,8 @@ const Contact = () => {
                 />
               </motion.div>
               <motion.ul
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 2.05, duration: 0.4, ease: "easeOut" } }}
+                initial={{ opacity: 0 }}
+                animate={infoAnim}
                 className="flex flex-col gap-10 bg-[#27272c]/80 backdrop-blur-sm p-10 rounded-xl w-full"
               >
                 {info.map((item, index) => {
@@ -272,8 +284,8 @@ const Contact = () => {
                 })}
               </motion.ul>
               <motion.ul
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 2.25, duration: 0.4, ease: "easeOut" } }}
+                initial={{ opacity: 0 }}
+                animate={extraAnim}
                 className="flex flex-col gap-4 bg-[#27272c]/80 backdrop-blur-sm p-6 rounded-xl w-full"
               >
                 {extraInfo.map((item, index) => {
