@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
 import DotGrid from "@/components/bgs/DotGrid";
 import Footer from "@/components/Footer";
 
@@ -127,7 +128,11 @@ const Contact = () => {
       <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-16 relative z-10 mt-24">
         <div className="container mx-auto">
           <div className="flex flex-col xl:flex-row xl:items-end gap-[30px]">
-            <div className="xl:h-[54%] order-2 xl:order-none">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 1.6, duration: 0.4, ease: "easeOut" } }}
+              className="xl:h-[54%] order-2 xl:order-none"
+            >
               <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
@@ -225,8 +230,12 @@ const Contact = () => {
                   Send message
                 </Button>
               </form>
-            </div>
-            <div className="flex-1 flex flex-col items-center xl:items-end xl:justify-end order-1 xl:order-none mb-8 xl:mb-0 gap-4 xl:gap-5">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 1.85, duration: 0.4, ease: "easeOut" } }}
+              className="flex-1 flex flex-col items-center xl:items-end xl:justify-end order-1 xl:order-none mb-8 xl:mb-0 gap-4 xl:gap-5"
+            >
               <div className="flex flex-wrap items-center justify-center xl:justify-end gap-1 text-white text-xl sm:text-2xl xl:text-3xl font-semibold">
                 <span className="text-xl">What’s up! I’m Arthur, a creative</span>
                 <RotatingText
@@ -273,7 +282,7 @@ const Contact = () => {
                   );
                 })}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
