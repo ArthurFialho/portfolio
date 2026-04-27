@@ -64,7 +64,17 @@ const Contact = () => {
   const infoAnim  = useAnimation();
   const extraAnim = useAnimation();
 
+  const animated = useRef(false);
+
   useEffect(() => {
+    if (animated.current) {
+      formAnim.set({ opacity: 1 });
+      textAnim.set({ opacity: 1 });
+      infoAnim.set({ opacity: 1 });
+      extraAnim.set({ opacity: 1 });
+      return;
+    }
+    animated.current = true;
     formAnim.start({ opacity: 1, transition: { delay: 1.6,  duration: 0.4, ease: "easeOut" } });
     textAnim.start({ opacity: 1, transition: { delay: 1.85, duration: 0.4, ease: "easeOut" } });
     infoAnim.start({ opacity: 1, transition: { delay: 2.05, duration: 0.4, ease: "easeOut" } });
@@ -247,7 +257,7 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={textAnim}
-                className="flex flex-wrap items-center justify-center xl:justify-end gap-1 text-white text-xl sm:text-2xl xl:text-3xl font-semibold"
+                className="hidden sm:flex flex-wrap items-center justify-center xl:justify-end gap-1 text-white text-xl sm:text-2xl xl:text-3xl font-semibold"
               >
                 <span className="text-xl">What’s up! I’m Arthur, a creative</span>
                 <RotatingText
@@ -275,9 +285,9 @@ const Contact = () => {
                       <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
                         <div className="text-[28px]">{item.icon}</div>
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-white/60">{item.title}</p>
-                        <h3 className="text-xl">{item.description}</h3>
+                        <h3 className="text-xl break-all">{item.description}</h3>
                       </div>
                     </li>
                   );
