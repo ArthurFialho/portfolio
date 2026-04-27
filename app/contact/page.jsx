@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
 import { motion, useAnimation } from "framer-motion";
 import DotGrid from "@/components/bgs/DotGrid";
