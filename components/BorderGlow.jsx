@@ -152,8 +152,8 @@ const BorderGlow = ({
     <div
       ref={cardRef}
       onPointerMove={handlePointerMove}
-      onPointerEnter={() => setIsHovered(true)}
-      onPointerLeave={() => setIsHovered(false)}
+      onPointerEnter={(e) => { if (e.pointerType !== 'touch') setIsHovered(true); }}
+      onPointerLeave={(e) => { if (e.pointerType !== 'touch') setIsHovered(false); }}
       className={`relative grid isolate border border-white/15 ${className}`}
       style={{
         background: backgroundColor,
