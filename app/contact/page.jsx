@@ -83,7 +83,7 @@ const Contact = () => {
           <div className="flex flex-col xl:flex-row xl:items-end gap-8">
 
             {/* Form */}
-            <motion.div {...fadeIn(0.2)} className="w-full xl:flex-1 order-2 xl:order-none">
+            <motion.div {...fadeIn(0.2)} className="w-full xl:flex-1 order-1 xl:order-none">
               <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-6 p-6 sm:p-10 bg-[#27272c] rounded-xl"
@@ -133,7 +133,7 @@ const Contact = () => {
             </motion.div>
 
             {/* Info panel */}
-            <div className="w-full xl:flex-1 flex flex-col items-center xl:items-end order-1 xl:order-none gap-4">
+            <div className="w-full xl:flex-1 flex flex-col items-center xl:items-end order-2 xl:order-none gap-4">
 
               {/* Rotating text — hidden on mobile */}
               <motion.div
