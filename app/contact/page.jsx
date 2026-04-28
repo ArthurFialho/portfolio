@@ -67,18 +67,16 @@ const Contact = () => {
   const animated = useRef(false);
 
   useEffect(() => {
-    if (animated.current) {
-      formAnim.set({ opacity: 1 });
-      textAnim.set({ opacity: 1 });
-      infoAnim.set({ opacity: 1 });
-      extraAnim.set({ opacity: 1 });
-      return;
-    }
+    const withDelay = !animated.current;
     animated.current = true;
-    formAnim.start({ opacity: 1, transition: { delay: 1.6,  duration: 0.4, ease: "easeOut" } });
-    textAnim.start({ opacity: 1, transition: { delay: 1.85, duration: 0.4, ease: "easeOut" } });
-    infoAnim.start({ opacity: 1, transition: { delay: 2.05, duration: 0.4, ease: "easeOut" } });
-    extraAnim.start({ opacity: 1, transition: { delay: 2.25, duration: 0.4, ease: "easeOut" } });
+
+    const show = (ctrl, delay) =>
+      ctrl.start({ opacity: 1, transition: withDelay ? { delay, duration: 0.4, ease: "easeOut" } : { duration: 0 } });
+
+    show(formAnim,  1.6);
+    show(textAnim,  1.85);
+    show(infoAnim,  2.05);
+    show(extraAnim, 2.25);
   }, []);
 
   function formatTelefone(value) {
