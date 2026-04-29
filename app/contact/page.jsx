@@ -36,8 +36,7 @@ const extraInfo = [
 
 const fadeIn = (delay) => ({
   initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
+  animate: { opacity: 1 },
   transition: { delay, duration: 0.4, ease: "easeOut" },
 });
 
